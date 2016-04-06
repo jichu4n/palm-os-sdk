@@ -1,0 +1,7 @@
+Palm OS SDK
+~~~~~~~~~~~
+
+This repository is an archive of the official Palm OS SDK, which is no longer
+available on the now defunct Palm, Inc. website.
+
+The version of the SDK is 5.0r3.
