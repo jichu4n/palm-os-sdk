@@ -1,0 +1,48 @@
+/******************************************************************************
+ *
+ * Copyright (c) 1999-2000 Palm, Inc. or its subsidiaries.
+ * All rights reserved.
+ *
+ * File: PalmOS.win.pch
+ *
+ * Release: Palm OS SDK 4.0 (63220)
+ *
+ * Description:
+ *		Precompiled header file for PalmOS.h.
+ *
+ *		To use precompiled headers, add this file to your application project,
+ *		and add the output filename ("PalmOS_Headers" for device builds, or
+ *		"PalmOS_Sim_Headers" for simulator builds) to the "Prefix File" field
+ *		of the "C/C++ Language" project settings panel.
+ *
+ *		To use a custom prefix file in your project, #include "StarterPrefix.h" and
+ *		in "StarterPrefix.h" add: #include "PalmOS_Headers" (or PalmOS_Sim_Headers)
+ *		as the FIRST #include line.
+ *
+ *		To override values (such as the ERROR_CHECK_LEVEL define), see comments below
+ *		regarding modifying this file or creating your own version.
+ *
+ * History:
+ *   12/ 3/99  SCL - Created by Steve Lemke
+ *
+ *****************************************************************************/
+
+#ifndef	__PALMOS_PCH__ 
+#define	__PALMOS_PCH__ 
+
+// To override certain build options, modify this file or create your own copy of it,
+// and do something like the following to customize the #define options...
+//
+//#include <BuildDefines.h>
+//#define ERROR_CHECK_LEVEL ERROR_CHECK_PARTIAL
+
+// Include the Palm OS public header files
+#include <PalmOS.h>
+
+#if EMULATION_LEVEL == EMULATION_NONE
+	#pragma precompile_target "PalmOS_Headers"
+#else
+	#pragma precompile_target "PalmOS_Headers_Sim"
+#endif
+
+#endif	// __PALMOS_PCH__

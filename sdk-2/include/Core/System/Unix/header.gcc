@@ -1,0 +1,17 @@
+arpa/inet.h		arpa_inet.h
+netinet/in.h		netinet_in.h
+netinet/ip.h		netinet_ip.h
+netinet/systm.h		netinet_systm.h
+netinet/tcp.h		netinet_tcp.h
+sys/errno.h		sys_errno.h
+sys/socket.h		sys_socket.h
+sys/socketvar.h		sys_socketvar.h
+sys/time.h		sys_time.h
+sys/types.h		sys_types.h
+sys/uio.h		sys_uio.h
+fcntl.h			unix_fcntl.h
+netdb.h			unix_netdb.h
+unix_stdarg.h		gcc_stdarg.h
+stdio.h			unix_stdio.h
+stdlib.h		unix_stdlib.h
+string.h		unix_string.h
