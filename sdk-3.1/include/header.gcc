@@ -1,0 +1,7 @@
+IMCUtils.h	Core/System/ImcUtils.h
+CharLatin.h	Core/International/CharLatin.h
+CharShiftJIS.h	Core/International/CharShiftJIS.h
+IntlMgr.h	Core/International/IntlMgr.h
+JapaneseFEP.h	Core/International/JapaneseFEP.h
+TextMgr.h	Core/International/TextMgr.h
+TextServices.h	Core/International/TextServices.h

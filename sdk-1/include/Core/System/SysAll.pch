@@ -1,0 +1,35 @@
+/*******************************************************************
+ * 							 Pilot Software
+ *
+ *		 Copyright(c) 1994, Palm Computing Inc., All Rights Reserved
+ *
+ *-------------------------------------------------------------------  
+ * FileName:
+ *		SysAll.pch
+ *
+ * Description:
+ *		Source file used to generate pre-compiled headers for Pilot
+ *  System Modules
+ *
+ * History:
+ *   	6/6/95  RM - Created by Ron Marianetti
+ *
+ *******************************************************************/  
+
+// By including this module in your CodeWarrior project. You can automatically
+//  regenerate the pre-compiled header file used by the System modules called
+//  SysAll.h.obj
+#ifdef 	EMULATION_LEVEL
+	#pragma precompile_target ":Obj:SysAll.h.obj.mpw"
+#else
+	#pragma precompile_target ":Obj:SysAll.h.obj"
+#endif
+
+// Define this so that SysAll.h doesn't try to include the pre-compiled header
+//   that we're currently building.
+#define BUILDING_PRECOMPILED_HEADER	
+
+
+// These are the Pilot-only header files.
+#include <SysAll.h>
+

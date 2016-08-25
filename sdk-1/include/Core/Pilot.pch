@@ -1,0 +1,30 @@
+/*******************************************************************
+ * 							 Pilot Software
+ *
+ *		 Copyright(c) 1994, Palm Computing Inc., All Rights Reserved
+ *
+ *-------------------------------------------------------------------  
+ * FileName:
+ *		Pilot.pch
+ *
+ * Description:
+ *		Source file used to generate pre-compiled headers for Pilot
+ *  UI modules
+ *
+ * History:
+ *   	6/6/95  RM - Created by Ron Marianetti
+ *
+ *******************************************************************/  
+
+// By including this module in your CodeWarrior project. You can automatically
+//  regenerate the pre-compiled header file used by the UI modules called
+//  Pilot.h.obj
+#ifdef 	EMULATION_LEVEL
+	#pragma precompile_target ":Obj:Pilot.h.obj.mpw"
+#else
+	#pragma precompile_target ":Obj:Pilot.h.obj"
+#endif
+
+// Include the World....			
+#include <Pilot.h>
+

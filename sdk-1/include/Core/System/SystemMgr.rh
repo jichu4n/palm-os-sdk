@@ -1,0 +1,165 @@
+/*******************************************************************
+ * 							Pilot Software
+ *
+ *  Copyright(c) 1994, Palm Computing Inc., All Rights Reserved  
+ *
+ *-------------------------------------------------------------------
+ * FileName:
+ *		SystemMgr.rh
+ *
+ * Description:
+ *		Include file for both PilotRez and the C Compiler. This file contains
+ *  equates used by both tools. When compiling using the C compiler
+ *  the variable RESOURCE_COMPILER must be defined.
+ *  
+ *
+ * History:
+ *   	2/27/95 Created by Ron Marianetti
+ *		8/4/95	vmk	Added system resource id for Desktop Link user info
+ *
+ *******************************************************************/
+
+#ifndef 	__SYSTEMMGR_RH__
+#define	__SYSTEMMGR_RH__
+
+//-----------------------------------------------------------
+// This section is common to both the C and Resource Compiler
+//-----------------------------------------------------------
+
+//................................................................
+// File types and creators
+//
+//	Each database shall have a creator ID and a type.
+//
+//	The creator ID shall establish which application, patch, or extension
+//	a particular database is associated with.  The creator ID should identify
+//	the application/patch/extension, NOT who created it.
+//
+//	The type will determine which part of an application,
+//	patch, or extension a particular database is.
+//
+//	There can be only one database per application, patch, or extension
+//	which has type 'application', 'patch', or 'extension'.
+//
+//	Creators:
+//
+//	ROM-based applications created by Palm Computing have all-lower case
+//	creator ID's.  Third-party applications have creator ID's which
+//	are either all caps, or mixed case.  The same requirements go for
+//	system patches and extensions.
+//
+//	All applications, system patches and extensions shall have unique creator
+//	ID's.
+//
+//	Types:
+//
+//	'Application', 'Extension', and 'Patch' file/database types for ROM-based
+//	apps shall be all-lower case (they are defined below).  Other
+//	file/database types must be mixed-case,
+//	or all caps.  These other types are internal to the applications, and
+//	therefore the system is unconcerned with their exact values.
+//................................................................
+#define	sysFileCSystem						'psys'	// Creator type for System files
+#define  sysFileCGraffiti					'graf'	// Creator type for Graffiti databases
+#define	sysFileCSystemPatch				'ptch'	// Creator for System resource file patches
+
+#define	sysFileCCalculator				'calc'	// Creator type for Calculator App
+#define	sysFileCSecurity					'secr'	// Creator type for Security App
+#define	sysFileCFirstApp					'pref'	// Creator type for First App after reset
+#define	sysFileCDefaultApp				'memr'	// Creator type for Default app 
+
+#define	sysFileCAddress					'addr'
+#define	sysFileCToDo						'todo'
+#define	sysFileCDatebook					'date'
+#define	sysFileCMemo						'memo'
+#define	sysFileCSync						'sync'
+#define	sysFileCSecurity					'secr'
+
+#define	sysFileTSystem						'rsrc'	// File type for Main System File
+#define	sysFileTSystemPatch				'ptch'	// File type for System resource file patches
+#define	sysFileTKernel						'krnl'	// File type for System Kernel (AMX)
+#define	sysFileTUIAppShell				'uish'	// File type for UI Application Shell
+#define	sysFileTExtension					'extn'	// File type for System Extensions
+#define	sysFileTApplication				'appl'	// File type for applications
+
+#define	sysFileTGraffitiMacros			'macr'	//  Graffiti Macros database
+
+
+//................................................................
+// Resource types and IDs
+//................................................................
+#define	sysResTBootCode					'boot'	// Resource type of boot resources
+#define	sysResIDBootReset					10000		// Reset code 
+#define	sysResIDBootInitCode				10001		// Init code 
+#define	sysResIDBootSysCodeStart		10100		// System code resources start here
+#define	sysResIDBootSysCodeMin			10102		// IDs 'Start' to this must exist!!
+#define	sysResIDBootUICodeStart			10200		// UI code resources start here
+#define	sysResIDBootUICodeMin			10203		// IDs 'Start' to this must exist!!
+	
+#define	sysResTAppPrefs					'pref'	// Resource type of App preferences resources
+
+#define	sysResTAppCode						'code'	// Resource type of App code resources
+#define	sysResTAppGData					'data'	// Resource type of App global data resources
+
+#define	sysResTExtensionCode				'extn'	// Resource type of Extensions code
+
+#define	sysResTFeatures					'feat'	// Resource type of System features table
+#define	sysResIDFeatures					10000		// Resource ID of System features table
+
+#define	sysResTLibrary						'libr'	// Resource type of System Libraries
+
+#define	sysResTGrfTemplate				'tmpl'	// Graffiti templates "file"
+#define	sysResIDGrfTemplate				10000		// Graffiti templates "file" ID
+#define	sysResTGrfDictionary				'dict'	// Graffiti dictionary "file"
+#define	sysResIDGrfDictionary			10000		// Graffiti dictionary "file" ID
+#define	sysResIDGrfDefaultMacros		10000		// sysResTDefaultDB resource with Graffiti Macros database
+
+#define	sysResTDefaultDB					'dflt'	// Default database resource type
+#define	sysResIDDefaultDB					1			// resource ID of sysResTDefaultDB in each app
+
+// System Preferences
+#define	sysResTSysPref						sysFileCSystem
+#define	sysResIDSysPrefMain				0			// Main preferences
+#define	sysResIDSysPrefPassword			1			// Password
+#define	sysResIDSysPrefFindStr			2			// Find string
+#define	sysResIDSysPrefCalibration		3			// Digitizer calibration.
+#define	sysResIDDlkUserInfo				4			// Desktop Link user information.
+
+
+//-----------------------------------------------------------
+// This section is only valid when running the resource compiler
+//-----------------------------------------------------------
+#ifdef RESOURCE_COMPILER
+
+// Definition of the Pilot Preferences Resource. This must match
+//  the definition of the structure SysAppPrefs in SystemMgr.h
+resdef {
+	word	priority;				// AMX task priority
+	long	stackSize;				// required stack size
+	long	minHeapSpace;			// min required free space in heap
+	} sysResTAppPrefs;
+
+
+// Definition of the ROM - Based   Feature table
+resdef {
+	word	featureNum;				// Feature number
+	long  featureValue;			// Feature value
+	} 'FITM';
+	
+resdef {
+	long	creator;					// creator type
+	word	len(featureItems);
+	resource 'FITM' featureItems[];
+	} 'CITM';
+
+resdef {
+	word	len(creatorItems);
+	resource 'CITM' creatorItems[];
+	} sysResTFeatures;
+
+
+#endif
+
+
+#endif //__SYSTEMMGR_RH__
+
