@@ -1,0 +1,44 @@
+###############################################################################
+#
+# Copyright (c) 1994-2003 PalmSource, Inc. All rights reserved.
+#
+# File: header.gcc
+#
+# Release: 
+#
+###############################################################################
+
+ImcUtils.h	Core/System/IMCUtils.h
+PalmOptErrorCheckLevel.h	Dynamic/PalmOptErrorCheckLevel.h
+PalmOptTraceLevel.h	Dynamic/PalmOptTraceLevel.h
+ExpansionMgr.h	Extensions/ExpansionMgr/ExpansionMgr.h
+FSLib.h	Extensions/ExpansionMgr/FSLib.h
+SlotDrvrLib.h	Extensions/ExpansionMgr/SlotDrvrLib.h
+VFSMgr.h	Extensions/ExpansionMgr/VFSMgr.h
+ExgLocalLib.h	Libraries/ExgLocal/ExgLocalLib.h
+INetMgr.h	Libraries/INet/INetMgr.h
+LibTraps.h	Libraries/LibTraps.h
+Lz77Mgr.h	Libraries/Lz77/Lz77Mgr.h
+BmpGlue.h	Libraries/PalmOSGlue/BmpGlue.h
+CtlGlue.h	Libraries/PalmOSGlue/CtlGlue.h
+DateGlue.h	Libraries/PalmOSGlue/DateGlue.h
+FldGlue.h	Libraries/PalmOSGlue/FldGlue.h
+FntGlue.h	Libraries/PalmOSGlue/FntGlue.h
+FrmGlue.h	Libraries/PalmOSGlue/FrmGlue.h
+IntlGlue.h	Libraries/PalmOSGlue/IntlGlue.h
+LmGlue.h	Libraries/PalmOSGlue/LmGlue.h
+LstGlue.h	Libraries/PalmOSGlue/LstGlue.h
+OmGlue.h	Libraries/PalmOSGlue/OmGlue.h
+PalmOSGlue.h	Libraries/PalmOSGlue/PalmOSGlue.h
+ResGlue.h	Libraries/PalmOSGlue/ResGlue.h
+SysGlue.h	Libraries/PalmOSGlue/SysGlue.h
+TblGlue.h	Libraries/PalmOSGlue/TblGlue.h
+TsmGlue.h	Libraries/PalmOSGlue/TsmGlue.h
+TxtGlue.h	Libraries/PalmOSGlue/TxtGlue.h
+WinGlue.h	Libraries/PalmOSGlue/WinGlue.h
+PdiConst.h	Libraries/Pdi/PdiConst.h
+PdiLib.h	Libraries/Pdi/PdiLib.h
+SmsLib.h	Libraries/Sms/SmsLib.h
+TelephonyMgr.h	Libraries/Telephony/TelephonyMgr.h
+TelephonyMgrTypes.h	Libraries/Telephony/TelephonyMgrTypes.h
+TelephonyMgrUI.h	Libraries/Telephony/UI/TelephonyMgrUI.h
