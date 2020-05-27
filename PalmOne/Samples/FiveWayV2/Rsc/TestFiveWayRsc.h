@@ -1,0 +1,19 @@
+/* pilrc generated file.  Do not edit!*/
+#define NotAvailableAlert 1018
+#define RomIncompatibleAlert 1017
+#define OptionsAbout 1016
+#define MainSelectField 1015
+#define MainRightField 1014
+#define MainLeftField 1013
+#define MainDownField 1012
+#define MainChrField 1011
+#define MainUnnamed1008Label 1010
+#define MainUnnamed1007Label 1009
+#define MainRightCheckbox 1008
+#define MainLeftCheckbox 1007
+#define MainDownCheckbox 1006
+#define MainSelectCheckbox 1005
+#define MainUpField 1004
+#define MainUpCheckbox 1003
+#define OptionsMenu 1002
+#define MainForm 1001

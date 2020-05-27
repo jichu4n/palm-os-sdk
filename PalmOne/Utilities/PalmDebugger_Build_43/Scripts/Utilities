@@ -1,0 +1,26 @@
+;################################################################
+; Utility Functions.
+; 
+; This debugger script file contains a few aliases to mimic
+; such useful commands as "step out" 
+;
+; 
+;##############################################################
+
+alias "p1" "dl a6+8"	; 1st parameter
+alias "p2" "dl a6+C"	; 2nd parameter
+alias "p3" "dl a6+10"	; 3rd parameter
+alias "p4" "dl a6+14"	; 4th parameter
+
+
+alias "r" "gt @sp"		; return to caller. Only works BEFORE the LINK inst.
+alias "o" "gt @(a6+4)"	; step out. Only works AFTER the LINK inst.
+
+var "offset" 1e
+
+alias "ic" "il pc-offset"
+alias "ic1" "il @(a6+4)-offset"
+alias "ic2" "il @(@a6+4)-offset"
+alias "ic3" "il @(@@a6+4)-offset"
+alias "ic4" "il @(@@@a6+4)-offset"
+alias "ic5" "il @(@@@@a6+4)-offset"

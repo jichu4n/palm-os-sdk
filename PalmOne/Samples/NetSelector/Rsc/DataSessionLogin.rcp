@@ -1,0 +1,109 @@
+GENERATEHEADER "DataSessionLogin.h"
+RESETAUTOID 1000
+
+VERSION ID 1 "1.0"
+
+APPLICATIONICONNAME ID 1000 "NetLogin" 
+
+// =======================================================
+// Menu
+// =======================================================
+MENU ID rscMainFormMenuBar
+  BEGIN
+  	PULLDOWN "Login"
+  		BEGIN
+  		    MENUITEM "(Default Profile)" rscMainDummyItem1
+  			MENUITEM "Foreground" rscMainForegroundLogin
+  			MENUITEM "Background" rscMainBackgroundLogin
+  		END
+  	PULLDOWN "Profile"
+  	    BEGIN
+  	        MENUITEM "Create New Profile" rscMainNewProfile
+  	        MENUITEM "Set Current to Default" rscMainDefaultProfile
+  	    END
+    PULLDOWN "Help"
+      BEGIN
+        MENUITEM "About" rscMainHelpAbout
+      END
+  END
+
+// =======================================================
+// Forms
+// =======================================================
+FORM ID rscMainForm AT (0 0 160 160)
+NOFRAME
+USABLE 
+MENUID rscMainFormMenuBar
+BEGIN
+	TITLE "Login Control"
+	GADGET ID rscGadgetSignalLevel AT (130 0 16 12)
+	GADGET ID rscGadgetMainBatteryLevel AT (150 0 10 12)
+
+	LABEL "Profile:" ID rscMainNameLabel AT (30 40)  USABLE FONT 1
+	FIELD ID rscMainNameField AT (70 40 120 25)  USABLE NONEDITABLE MULTIPLELINES LEFTALIGN AUTOSHIFT MAXCHARS 255
+
+    BUTTON "<< Prev" ID rscMainPrevButton  AT (30 70  40 AUTO) USABLE 
+	BUTTON "Next >>" ID rscMainNextButton	AT (90 70  40 AUTO) USABLE 
+	
+    BUTTON "Connect" ID rscMainConnectButton  AT (30 100 40 AUTO) USABLE 
+    BUTTON "Disconnect" ID rscMainDisconnectButton  AT (90 100 AUTO AUTO) USABLE 
+END
+
+FORM ID rscProfileForm AT (0 0 160 160)
+NOFRAME
+MODAL
+USABLE 
+BEGIN
+	TITLE "New Profile"
+    GRAFFITISTATEINDICATOR AT (149 148)
+    
+	LABEL "Name:" ID rscProfNameLabel AT (1 20)  USABLE FONT 1
+	FIELD ID rscProfNameField AT (PREVRIGHT+10 20 120 25)  USABLE LEFTALIGN UNDERLINED AUTOSHIFT MAXCHARS 32
+	
+	LABEL "Connection:" ID rscProfConnectionLabel AT (1 PREVTOP+20) USABLE FONT 1
+	FIELD ID rscProfConnectionField AT (PREVRIGHT+10 PREVTOP 120 25) USABLE NONEDITABLE LEFTALIGN AUTOSHIFT MAXCHARS 32
+	
+	LABEL "User Name:" ID rscProfUserLabel AT (1 PREVTOP+20) USABLE FONT 1
+	FIELD ID rscProfUserField AT (PREVRIGHT+10 PREVTOP 120 25) USABLE LEFTALIGN UNDERLINED AUTOSHIFT MAXCHARS 32
+	
+	LABEL "Password:" ID rscProfPasswordLabel AT (1 PREVTOP+20) USABLE FONT 1
+	FIELD ID rscProfPasswordField AT (PREVRIGHT+10 PREVTOP 120 25) USABLE LEFTALIGN UNDERLINED AUTOSHIFT MAXCHARS 32
+	
+	LABEL "APN:" ID rscProfAPNLabel AT (1 PREVTOP+20) USABLE FONT 1
+	FIELD ID rscProfAPNField AT (PREVRIGHT+10 PREVTOP 120 25) USABLE LEFTALIGN UNDERLINED AUTOSHIFT MAXCHARS 32
+		
+    BUTTON "Done" ID rscProfDoneButton  AT (1 147 AUTO AUTO) USABLE 
+
+END
+
+
+// =======================================================
+// Incompatible ROM Alert  
+// =======================================================
+ALERT rscRomIncompatibleAlert
+INFORMATION
+BEGIN
+	TITLE "Rom Incompatible"
+	MESSAGE "System Version 5.0 or greater is required to run this " \
+        	"application."
+	BUTTONS "OK" 
+END
+
+// =======================================================
+// Unsupported Phone Alert  
+// =======================================================
+ALERT ID rscAlertIDPhoneNotSupported
+ERROR
+BEGIN
+  TITLE "Phone Unrecognized"
+  MESSAGE "Unrecognized phone type."
+  BUTTONS "Exit"
+END
+
+ALERT ID rscCustomAlert
+ERROR
+BEGIN
+  TITLE "New Profile"
+  MESSAGE "^1 ^2 ^3"
+  BUTTONS "OK"
+END

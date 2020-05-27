@@ -1,0 +1,61 @@
+// --------------- Resources of type 'Talt' ---------------
+ALERT ID 2000
+	INFORMATION
+BEGIN
+	TITLE "No Cards"
+	MESSAGE "There are no cards on your device. CoolPlayer only plays music files fr" \
+	"om external cards."
+	BUTTONS "OK"
+END
+
+ALERT ID 2001
+	WARNING
+BEGIN
+	TITLE "DB Error"
+	MESSAGE "The databse has not been created. Call FileBowserCreateDB function  bef" \
+	"ore using FileBrowser form."
+	BUTTONS "OK"
+END
+
+// --------------- Resources of type 'Tbmp' ---------------
+BITMAPFAMILYEX ID 2000
+BEGIN
+	BITMAP "Tbmp07D0-8-d144.bmp" BPP 8
+		DENSITY 2 
+	BITMAP "Tbmp07D0-8.bmp" BPP 8
+		TRANSPARENTINDEX 0 
+	BITMAP "Tbmp07D0-4.bmp" BPP 4
+		TRANSPARENTINDEX 0 
+	BITMAP "Tbmp07D0-1.bmp" BPP 1
+END
+
+BITMAPFAMILYEX ID 2010
+BEGIN
+	BITMAP "Tbmp07DA-8-d144.bmp" BPP 8
+		DENSITY 2 
+	BITMAP "Tbmp07DA-8.bmp" BPP 8
+		TRANSPARENTINDEX 0 
+	BITMAP "Tbmp07DA-4.bmp" BPP 4
+		TRANSPARENTINDEX 0 
+	BITMAP "Tbmp07DA-1.bmp" BPP 1
+END
+
+BITMAPFAMILYEX ID 2020
+BEGIN
+	BITMAP "Tbmp07E4-8.bmp" BPP 8
+	BITMAP "Tbmp07E4-4.bmp" BPP 4
+	BITMAP "Tbmp07E4-1.bmp" BPP 1
+END
+
+// --------------- Resources of type 'tFRM' ---------------
+FORM ID 2000 AT (0 0 160 160)
+	NOFRAME NOSAVEBEHIND USABLE 
+BEGIN
+	TITLE "Files"
+	BUTTON "Cancel" ID 2001 AT (3 145 36 12) USABLE LEFTANCHOR FRAME
+	TABLE ID 2003 AT (2 30 146 110) ROWS 10 COLUMNS 1 COLUMNWIDTHS 146 
+	LABEL "Path:" ID 2004 AT (2 17) USABLE
+	FIELD ID 2005 AT (24 17 134 12) USABLE LEFTALIGN NONEDITABLE SINGLELINE MAXCHARS 80
+	SCROLLBAR  ID 2006 AT (151 29 7 112) USABLE VALUE 0 MIN 0 MAX 0 PAGESIZE 9
+END
+

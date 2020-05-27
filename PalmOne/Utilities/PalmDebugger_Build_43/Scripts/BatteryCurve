@@ -1,0 +1,52 @@
+;################################################################
+; Battery curve testing utility
+; 
+; Run this script to start testing the battery curve.  You should
+; run it using the serial debugger for consistency...
+; 
+; History:
+;   2001-01-09  dia	Created by Douglas Anderson based on
+;				Ron Marianetti's methods.
+;
+;##############################################################
+
+
+""
+"WARNING: This script hardcodes globals locations and the offset"
+"of certain fields in battery structures.  It must be updated if"
+"those values change"
+""
+
+
+""
+"Setting warning percentages / shutdown voltages to 0 for the first"
+"battery kind.  This has to be modified if you are not testing the"
+"first battery kind (see SysBatteryDataStruct and its usage)"
+""
+
+; 000002C2    MemPtr    sysBatteryDataP     = $0003FEBC
+
+; mild warning percentage
+sw (@.l($000002c2)+6) 00
+
+; severe warning percentage
+sw (@.l($000002c2)+8) 00
+
+; shutdown voltage (no load)
+sw (@.l($000002c2)+A) 00
+
+; ok to wake up voltage (no load)
+sw (@.l($000002c2)+C) 00
+
+
+""
+"Setting the filler in the 'batglobals' to 1 to indicate that we want"
+"printouts"
+""
+sb (@.l($000002F6)+2B) 01
+
+""
+"Run device (with 'g').  For consistency, you should make sure you're"
+"in the Launcher and using the serial debugger.  Might be good to turn"
+"make sure sound is off too.  Oh yeah, and don't forget shortcut .. 3."
+""

@@ -1,0 +1,63 @@
+;################################################################
+; Library Trap calls.
+; 
+; This debugger script file contains the trap numbers and library
+;  names for the Pilot Libraries. 
+;
+; Unlike the SystemTraps script, this one must be created and
+;  updated manually. 
+;##############################################################
+
+;SerialHWMgr Library
+atr "SerHWOpen" 					0801			"SerHWMgr Library"
+atr "SerHWClose" 					0802			"SerHWMgr Library"
+atr "SerHWSleep" 					0803			"SerHWMgr Library"
+atr "SerHWWake"					0804			"SerHWMgr Library"
+atr "SerHWOpenBackground" 		0805			"SerHWMgr Library"
+atr "SerHWRequestOpen"			0806			"SerHWMgr Library"
+atr "SerHWGetSettings"			0807			"SerHWMgr Library"
+atr "SerHWSetSettings"			0808			"SerHWMgr Library"
+atr "SerHWGetStatus"				0809			"SerHWMgr Library"
+atr "SerHWClearErr"				080A			"SerHWMgr Library"
+atr "SerHWSendWait"				080B			"SerHWMgr Library"
+atr "SerHWSendCheck"				080C			"SerHWMgr Library"
+atr "SerHWSendFlush"				080D			"SerHWMgr Library"
+atr "SerHWReceiveWait"			080E			"SerHWMgr Library"
+atr "SerHWReceiveCheck"			080F			"SerHWMgr Library"
+atr "SerHWReceiveFlush"			0810			"SerHWMgr Library"
+atr "SerHWSetReceiveBuffer"	0811			"SerHWMgr Library"
+atr "SerHWReceiveWindowOpen"	0812			"SerHWMgr Library"
+atr "SerHWReceiveWindowClose"	0813			"SerHWMgr Library"
+atr "SerHWSetWakeupHandler"	0814			"SerHWMgr Library"
+atr "SerHWPrimeWakeupHandler"	0815			"SerHWMgr Library"
+atr "SerHWControl"				0816			"SerHWMgr Library"
+atr "SerHWSend"					0817			"SerHWMgr Library"
+atr "SerHWReceive"				0818			"SerHWMgr Library"
+
+
+;IrSerial Library (for Gordon)
+atr "IrSerOpen" 					0801			"IrSerial Library"
+atr "IrSerClose" 					0802			"IrSerial Library"
+atr "IrSerSleep" 					0803			"IrSerial Library"
+atr "IrSerWake"					0804			"IrSerial Library"
+atr "IrSerGetSettings" 			0805			"IrSerial Library"
+atr "IrSerSetSettings"			0806			"IrSerial Library"
+atr "IrSerGetStatus"				0807			"IrSerial Library"
+atr "IrSerClearErr"				0808			"IrSerial Library"
+atr "IrSerSendIO"					0809			"IrSerial Library"
+atr "IrSerSendWait"				080A			"IrSerial Library"
+atr "IrSerSendCheck"				080B			"IrSerial Library"
+atr "IrSerSendFlush"				080C			"IrSerial Library"
+atr "IrSerReceiveIO"				080D			"IrSerial Library"
+atr "IrSerReceiveWait"			080E			"IrSerial Library"
+atr "IrSerReceiveCheck"			080F			"IrSerial Library"
+atr "IrSerReceiveFlush"			0810			"IrSerial Library"
+atr "IrSerSetReceiveBuffer"	0811			"IrSerial Library"
+atr "IrSerReceiveWindowOpen"	0812			"IrSerial Library"
+atr "IrSerReceiveWindowClose"	0813			"IrSerial Library"
+atr "IrSerSetWakeupHandler"	0814			"IrSerial Library"
+atr "IrSerPrimeWakeupHandler"	0815			"IrSerial Library"
+atr "IrSerControl"				0816			"IrSerial Library"
+atr "IrSerSend"					0817			"IrSerial Library"
+atr "IrSerReceive"				0818			"IrSerial Library"
+

@@ -1,0 +1,57 @@
+;FILE: Erase8MBFlashModule
+;
+;DESCRIPTION: this Palm Debugger script file erases the linear flash chips on an 8MB flash module
+;  that is made up of 2MB x 4 flash chips.  AMD, Fujitsu and Toshiba linear flash devices have
+;  been tested and known to work
+;
+;
+;USAGE:
+;
+; 1. Insert flash module into handheld
+; 2. Enter debugger on the handheld (use the <shortcut> . 1 graffiti stroke)
+; 3. Make sure the Palm Debugger is attached to the handheld (use the "att" command to verify)
+; 4. Execute this script via the PalmDebugger "run" command:
+;            run "Scripts\\Erase8MBFlashModule"
+; 5. Wait at least 30 seconds for the chips to finish erasing (do *not* remove the module or
+;    reset the handheld during this period).  If you don't wait long enough, the data of the
+;    flash chips will be left in an unknown state.
+; 6. Remove the module from the handheld and reset the handheld.
+;
+;HISTORY:
+;
+; 30-Aug-1999	VMK	Created
+;
+
+"Erasing 1st chip"
+sw 28000000+(555*2) aa
+sw 28000000+(2aa*2) 55
+sw 28000000+(555*2) 80
+sw 28000000+(555*2) aa
+sw 28000000+(2aa*2) 55
+sw 28000000+(555*2) 10
+
+"Erasing 2nd chip"
+sw 28200000+(555*2) aa
+sw 28200000+(2aa*2) 55
+sw 28200000+(555*2) 80
+sw 28200000+(555*2) aa
+sw 28200000+(2aa*2) 55
+sw 28200000+(555*2) 10
+
+"Erasing 3rd chip"
+sw 28400000+(555*2) aa
+sw 28400000+(2aa*2) 55
+sw 28400000+(555*2) 80
+sw 28400000+(555*2) aa
+sw 28400000+(2aa*2) 55
+sw 28400000+(555*2) 10
+
+"Erasing 4th chip"
+sw 28600000+(555*2) aa
+sw 28600000+(2aa*2) 55
+sw 28600000+(555*2) 80
+sw 28600000+(555*2) aa
+sw 28600000+(2aa*2) 55
+sw 28600000+(555*2) 10
+
+"WAIT AT LEAST 30 SECONDS BEFORE REMOVING THE MODULE OR RESETTING THE HANDHELD"

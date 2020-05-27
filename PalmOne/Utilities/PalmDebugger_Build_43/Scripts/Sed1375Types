@@ -1,0 +1,91 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;  SED1375 LCD Controller 
+;  script file for PalmDebugger
+;
+;  This file should have any useful macros for the debugger.
+;  Examples of this are structures for the register maps in 
+;  the processors, the globals, and other data formats.
+;
+;  History
+;  Creator and origin unknown
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; These MPW script lines will do most of the work of converting
+;   a C Structure type to Debugger format
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;find ¥
+;replace  -c ° /([A-Za-z]+)¨2[ ¶t]+([_a-zA-Z0-9¶[¶]¶-]+)¨1;Å/ "> ¨2 ¶"¨1¶""
+;find ¥
+;replace -c ° /¶/¶/Å/ ""
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; DragonBall VZ definitions
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+typedef struct "Sed1375RegsType"
+	> UInt8           "productRevisionCode"		
+	> UInt8           "mode0"					
+												
+	> UInt8           "mode1"					
+	> UInt8           "mode2"					
+												
+	> UInt8           "horizontalPanelSize"		
+	> UInt8           "verticalPanelSizeLSB"		
+												
+	> UInt8           "verticalPanelSizeMSB"		
+	> UInt8           "fpLineStartPosition"		
+												
+	> UInt8           "horizontalNonDisplayPeriod"	
+	> UInt8           "fpFrameStartPosition"		
+												
+	> UInt8           "verticalNonDisplayPeriod"	
+	> UInt8           "modRate"					
+												
+	> UInt8           "screen1StartAddressLSB"	
+	> UInt8           "screen1StartAddressMSB"	
+												
+	> UInt8           "screen2StartAddressLSB"	
+	> UInt8           "screen2StartAddressMSB"	
+												
+	> UInt8           "screen1StartAddressMSBit"	
+												
+												
+	> UInt8           "memoryAddressOffset"		
+												
+	> UInt8           "screen1VerticalSizeLSB"	
+	> UInt8           "screen1VerticalSizeMSB"	
+												
+	> UInt8           "unused1"					
+	> UInt8           "lookUpTableAddress"		
+												
+	> UInt8           "unused2"					
+	> UInt8           "lookUpTableData"			
+												
+	> UInt8           "gpIoConfigurationControl"	
+	> UInt8           "gpIoStatusControl"		
+												
+	> UInt8           "scratchPad"				
+	> UInt8           "portraitMode"				
+												
+	> UInt8           "lineByteCountRegister"	
+	> UInt8           "unused3"					
+												
+	> UInt8           "unused4"					
+	> UInt8           "unused5"					
+	typeend
+	
+	
+
+
+
+	
+;################################################################
+; Macros
+;##############################################################
+alias "SED1375"			"dm 3801FFE0 Sed1375RegsType"

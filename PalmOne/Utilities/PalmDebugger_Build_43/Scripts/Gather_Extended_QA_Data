@@ -1,0 +1,26 @@
+echo on
+att
+att
+sc a6 100
+il pc-10 20 \bytes
+il : 100 \bytes
+reg
+il a4 100 \bytes
+dm a0 200
+dm a1 200
+dm a2 200
+dm a3 200
+dm a4 200
+dm a5 200
+dm a6 200
+dm a7 200
+dm : 100
+dm pc 200
+feature "-all"
+opened
+hd 0
+wh \a .
+echo off
+
+
+

@@ -1,0 +1,359 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;  DragonballTypes
+;  script file for PalmDebugger
+;
+;  This file should have any useful macros for the debugger.
+;  Examples of this are structures for the register maps in 
+;  the processors, the globals, and other data formats.
+;
+;  History
+;  Creator and origin unknown
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; These MPW script lines will do most of the work of converting
+;   a C Structure type to Debugger format
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;find ¥
+;replace  -c ° /([A-Za-z]+)¨2[ ¶t]+([_a-zA-Z0-9¶[¶]¶-]+)¨1;Å/ "> ¨2 ¶"¨1¶""
+;find ¥
+;replace -c ° /¶/¶/Å/ ""
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; DragonBall VZ definitions
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+typedef struct "HwrDBallZCSType"
+	> UInt16 "csAGroupBase"
+	> UInt16 "csBGroupBase"
+	> UInt16 "csCGroupBase"
+	> UInt16 "csDGroupBase"
+	> UInt16 "csUpperBaseVZ"
+	> UInt16 "csControlVZ"
+	> UInt16 "csControl2VZ"
+	> UInt8 "___filler6"[2] \-
+	> UInt16 "csASelect"
+	> UInt16 "csBSelect"
+	> UInt16 "csCSelect"
+	> UInt16 "csDSelect"
+	> UInt16 "emuCS"
+	> UInt8 "___filler2"[36] \-
+	> UInt16 "csControl3VZ"
+	> UInt8 "___filler2a"[ae] \-
+	typeend
+	
+	
+typedef struct "HwrDBallZPLLType"	  ;200
+	> UInt16 "pllControl"
+	> UInt16 "pllFreqSel"
+	> UInt16 "pllTest"
+	> UInt8 "__filler44" \-
+	> UInt8 "pwrControl"
+	> UInt8 "___filler3"[F8] \-
+	typeend
+	
+typedef struct "HwrDBallZINTType"	  ;300
+	> UInt8 "intVector"
+	> UInt8 "___filler4" \-
+	> UInt16 "intControl"
+	> UInt16 "intMaskHi"
+	> UInt16 "intMaskLo"
+	> UInt8 "___filler7"[4] \-
+	> UInt16 "intStatusHi"
+	> UInt16 "intStatusLo"
+	> UInt16 "intPendingHi"
+	> UInt16 "intPendingLo"
+	> UInt16 "intLevelCtrlVZ"			  ;314
+	> UInt8 "___filler4a"[EA] \-
+	typeend
+	
+	
+typedef struct "HwrDBallZPIOType"	  ;400
+	> UInt8 "portADir"
+	> UInt8 "portAData"
+	> UInt8 "portAPullupEn"
+	> UInt8 "___filler8"[5] \-
+	
+	> UInt8 "portBDir"
+	> UInt8 "portBData"
+	> UInt8 "portBPullupEn"
+	> UInt8 "portBSelect"
+	
+	> UInt8 "___filler9"[4] \-
+	
+	> UInt8 "portCDir"
+	> UInt8 "portCData"
+	> UInt8 "portCPulldnEn"
+	> UInt8 "portCSelect"
+	
+	> UInt8 "___filler10"[4] \-
+	
+	> UInt8 "portDDir"
+	> UInt8 "portDData"
+	> UInt8 "portDPullupEn"
+	> UInt8 "portDSelect"
+	> UInt8 "portDPolarity"
+	> UInt8 "portDIntReqEn"
+	> UInt8 "portDKbdIntEn"
+	> UInt8 "portDIntEdge"
+	
+	> UInt8 "portEDir"
+	> UInt8 "portEData"
+	> UInt8 "portEPullupEd"
+	> UInt8 "portESelect"
+	
+	> UInt8 "___filler14"[4] \-
+	
+	> UInt8 "portFDir"
+	> UInt8 "portFData"
+	> UInt8 "portFPullupEn"  
+	> UInt8 "portFSelect"
+	
+	> UInt8 "___filler16"[4] \-
+	
+	> UInt8 "portGDir"
+	> UInt8 "portGData"
+	> UInt8 "PortGPullupEn"
+	> UInt8 "portGSelect"
+
+	> UInt8 "___filler17"[4] \-
+	
+	> UInt8 "portJDirVZ"				;438
+	> UInt8 "portJDataVZ"
+	> UInt8 "portJPullupEnVZ"
+	> UInt8 "portJSelectVZ"
+	
+	> UInt8 "___filler18"[4] \-
+	
+	> UInt8 "portKDirVZ"
+	> UInt8 "portKDataVZ"
+	> UInt8 "portKPullupEnVZ"
+	> UInt8 "portKSelectVZ"
+
+	> UInt8 "___filler19"[4] \-
+
+	> UInt8 "portMDirVZ"
+	> UInt8 "portMDataVZ"
+	> UInt8 "portMPullupEnVZ"
+	> UInt8 "portMSelectVZ"
+	
+	> UInt8 "___filler2000"[B4] \-	;44C
+	typeend
+	
+	
+typedef struct "HwrDBallZPWMType"	;500
+	> UInt16 "pwm1Control"
+	> UInt16 "pwm1Sample"
+	> UInt8 "pwm1Period"
+	> UInt8 "pwm1Counter"
+	
+	> UInt8 "___filler500"[A] \-
+
+	> UInt16 "pwm2ControlVZ"
+	> UInt16 "pwm2PeriodVZ"
+	> UInt16 "pwm2WidthVZ"
+	> UInt16 "pwm2CounterVZ"
+	
+	> UInt8 "___filler501"[E8] \-
+	typeend
+	
+typedef struct "HwrDBallZTimerType"  ;600
+	> UInt16 "tmr1Control"
+	> UInt16 "tmr1Prescaler"
+	> UInt16 "tmr1Compare"
+	> UInt16 "tmr1Capture"
+	> UInt16 "tmr1Counter"
+	> UInt16 "tmr1Status"
+	
+	> UInt8 "___filler18"[4] \-
+
+	> UInt16 "tmr2ControlVZ"			  ;610
+	> UInt16 "tmr2PrescalerVZ"
+	> UInt16 "tmr2CompareVZ"
+	> UInt16 "tmr2CaptureVZ"
+	> UInt16 "tmr2CounterVZ"
+	> UInt16 "tmr2StatusVZ"
+	
+	> UInt8 "___filler25"[E4] \-	  ;61C
+	typeend	
+	
+			
+typedef struct "HwrDBallZSPIType"	  ;700
+	> UInt16 "spi1ReceiveVZ"
+	> UInt16 "spi1TransmitVZ"
+	> UInt16 "spi1ControlStatusVZ"
+	> UInt16 "spi1InterruptVZ"
+	> UInt16 "spi1TestVZ"
+	> UInt16 "spi1PeriodVZ"
+	
+	> UInt8 "___filler700"[F4] \-	  ;706
+	
+	> UInt16 "spi2Data"				  ;800
+	> UInt16 "spi2ControlStatus"		  
+	
+	> UInt8 "___filler27"[FC] \-		  ;804
+	typeend
+	
+typedef struct "HwrDBallZUARTType"	  ;900
+	> UInt16 "u1Control"
+	> UInt16 "u1Baud"
+	> UInt16 "u1Receive"
+	> UInt16 "u1Transmit"
+	> UInt16 "u1Misc"
+	> UInt16 "u1Prescaler"
+
+	> UInt8 "___filler900"[4] \-
+
+	> UInt16 "u2ControlVZ"
+	> UInt16 "u2BaudVZ"
+	> UInt16 "u2ReceiveVZ"
+	> UInt16 "u2TransmitVZ"
+	> UInt16 "u2MiscVZ"
+	> UInt16 "u2PrescalerVZ"
+	> UInt16 "u2FIFOMarkVZ"
+
+	> UInt8 "___filler28"[E2] \-		  ;91E
+
+	typeend
+	
+typedef struct "HwrDBallZLCDType"	  ;A00
+	> UInt32 "lcdStartAddr"
+	> UInt8 "___filler29" \-
+	> UInt8 "lcdPageWidth"
+	> UInt8 "___filler30"[2] \-
+	> UInt16 "lcdScreenWidth"
+	> UInt16 "lcdScreenHeight"
+	> UInt8 "___filler31"[0C] \-
+	> UInt16 "lcdCursorXPos"
+	> UInt16 "lcdCursorYPos"
+	> UInt16 "lcdCursorWidthHeight"
+	> UInt8 "___filler32" \-
+	> UInt8 "lcdBlinkControl"
+	> UInt8 "lcdPanelControl"
+	> UInt8 "lcdPolarity"
+	> UInt8 "___filler33" \-
+	> UInt8 "lcdACDRate"
+	> UInt8 "___filler34" \-
+	> UInt8 "lcdPixelClock"
+	> UInt8 "___filler35" \-
+	> UInt8 "lcdClockControl"
+	> UInt16 "lcdRefreshRateAdj"
+	> UInt8 "___filler2003"[3] \-
+	> UInt8 "lcdPanningOffset"
+	> UInt8 "___filler37"[3] \-
+	> UInt8 "lcdFrameRateEZ"
+	> UInt8 "___filler38"
+	> UInt8 "lcdGrayPalette"
+	> UInt8 "___filler2005"[2] \-
+	> UInt8 "lcdContrastControl"
+	> UInt8 "lcdContrastControlPWM"
+	> UInt8 "lcdRefreshModeVZ"
+	> UInt8 "lcdDMAControlVZ"
+	> UInt8 "___filler40"[c6] \-
+	typeend
+	
+typedef struct "HwrDBallZRTCType"		;B00
+	> UInt32 "rtcHourMinSec"
+	> UInt32 "rtcAlarm"
+	> UInt8 "___fillerB00"[2] \-
+	> UInt16 "rtcWatchDog"
+	> UInt8 "rtcControl"
+	> UInt8 "___fillerB01"
+	> UInt16 "rtcIntStatus"
+	> UInt16 "rtcIntEnable"
+	> UInt8 "stopWatch"
+	> UInt8 "___fillerB002"[7] \-
+	> UInt16 "rtcDay"
+	> UInt16 "rtcDayAlarm"
+	> UInt8 "___fillerB003"[E2] \-
+	typeend
+	
+typedef struct "HwrDBallZDramCtlType"	;C00
+    > UInt16 "dramConfig"
+	> UInt16 "dramControl"
+	> UInt16 "sdramControlVZ"
+	> UInt16 "sdramPowerDownVZ"
+	> UInt8 "___filler42"[F8] \-
+	typeend
+				
+typedef struct "HwrDBallZEMUType"		;D00
+	> UInt32 "emuAddrCompare"
+	> UInt32 "emuAddrMask"
+	> UInt16 "emuControlCompare"
+	> UInt16 "emuControlMask"
+	> UInt16 "emuControl"
+	> UInt16 "emuStatus"
+	typeend
+	
+typedef struct "HwrDBallZType"
+
+	> UInt8 "scr"
+	> UInt8 "___filler0"[2] \-
+	> UInt8 "pcrVZ"
+	> UInt8 "chipID"					;004
+	> UInt8 "maskID"
+	> UInt16 "swID"
+	> UInt16 "ioDriveControlVZ"		;008
+	> UInt8 "___filler1"[F6] \-		;00A
+	
+	> HwrDBallZCSType "Chip Select"
+	
+
+	> HwrDBallZPLLType "PLL"
+	
+	
+	> HwrDBallZINTType "INT"
+	
+	
+	> HwrDBallZPIOType "PIO"
+	
+	
+	> HwrDBallZPWMType "PWM"
+	
+	
+	> HwrDBallZTimerType "Timer"
+	
+	
+	> HwrDBallZSPIType "SPI"
+	
+	
+	> HwrDBallZUARTType "UART"
+	
+	
+	> HwrDBallZLCDType "LCD"
+		
+	
+	> HwrDBallZRTCType "RTC"
+	
+	
+	> HwrDBallZDramCtlType "DRAM Controller"
+	
+	
+	> HwrDBallZEMUType "EMU Control"
+	
+	typeend
+
+
+
+	
+;################################################################
+; Macros
+;##############################################################
+alias "DragonBallZ"		"dm FFFFF000 HwrDBallZType"
+alias "ZCS" 			"dm FFFFF100 HwrDBallZCSType"
+alias "ZPLL" 			"dm FFFFF200 HwrDBallZPLLType"
+alias "ZINT" 			"dm FFFFF300 HwrDBallZINTType"
+alias "ZPIO" 			"dm FFFFF400 HwrDBallZPIOType"
+alias "ZPWM" 			"dm FFFFF500 HwrDBallZPWMType"
+alias "ZTimer" 			"dm FFFFF600 HwrDBallZTimerType"
+alias "ZSPI" 			"dm FFFFF700 HwrDBallZSPIType"
+alias "ZUART" 			"dm FFFFF900 HwrDBallZUARTType"
+alias "ZLCD" 			"dm FFFFFA00 HwrDBallZLCDType"
+alias "ZRTC" 			"dm FFFFFB00 HwrDBallZRTCType"
+alias "ZDRAM"			"dm FFFFFC00 HwrDBallZDramCtlType"
+alias "ZEMU"			"dm FFFFFD00 HwrDBallZEMUType"

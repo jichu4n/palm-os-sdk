@@ -1,0 +1,159 @@
+#include "SimpleSMS.h"
+
+VERSION ID 1000 "5.1"
+
+APPLICATIONICONNAME ID 1000 "Simple SMS" 
+
+MENU ID resMenuIDSimpleSMS
+BEGIN
+	PULLDOWN "Options"
+	BEGIN
+		MENUITEM  "Un-Register SMS App" resMenuItemUnRegister "R"
+		MENUITEM  "-" resMenuItemSeperator
+		MENUITEM  "About..." resMenuItemAbout
+	END
+	PULLDOWN "Edit"
+	BEGIN
+		MENUITEM  "Undo" resMenuItemEditUndo "U"
+		MENUITEM  "Cut" resMenuItemEditCut "X"
+		MENUITEM  "Copy" resMenuItemEditCopy "C"
+		MENUITEM  "Paste" resMenuItemEditPaste "P"
+		MENUITEM  "Select All" resMenuItemEditSelectAll "S"
+		MENUITEM  "-" resMenuItemEditSeperator 
+		MENUITEM  "Keyboard" resMenuItemEditKeyboard "K"
+		MENUITEM  "Graffiti Help" resMenuItemEditGraffitiHelp "G"
+	END
+END
+
+FORM ID resFormIDSimpleSMS AT (0 0 160 160) MENUID resMenuIDSimpleSMS
+BEGIN
+	TITLE  "Simple SMS"
+
+	LABEL  "Service Center Address:" ID resLabelServiceCenter AT (20 22) FONT 1
+	FIELD ID resFieldServiceCenter AT (PREVLEFT PREVTOP+10 120 16)  UNDERLINED MAXCHARS 40
+
+	LABEL  "Address:" ID resLabelAddress AT (PREVLEFT PREVTOP+20) FONT 1
+	FIELD ID resFieldAddress AT (PREVLEFT PREVTOP+10 120 16)  UNDERLINED numeric MAXCHARS 40
+
+	LABEL  "Message:" ID resLabelMessage AT (PREVLEFT PREVTOP+20) FONT 1
+	FIELD ID resFieldMessage AT (PREVLEFT PREVTOP+10 120 40)  MULTIPLELINES UNDERLINED MAXCHARS 160 AUTOSHIFT
+
+	BUTTON "Send Message" ID resButtonSend AT (37 145 86 14) LEFTANCHOR
+
+	GRAFFITISTATEINDICATOR AT (133 151)
+	GADGET ID resGadgetSignalLevel AT (130 0 16 12)
+	GADGET ID resGadgetMainBatteryLevel AT (150 0 10 12)
+END
+
+/*
+NAVIGATION ID resFormIDSimpleSMS
+    INITIALSTATE 0x00000001
+    INITIALOBJECTID resFieldAddress
+    JUMPOBJECTID resButtonSend
+    BEGIN
+      ID resFieldAddress BELOW resFieldMessage
+      ID resFieldMessage BELOW resButtonSend
+      ID resButtonSend	 ABOVE resFieldMessage
+      ID resFieldMessage ABOVE resFieldAddress
+      ID resFieldAddress ABOVE resFieldServiceCenter
+      ID resFieldServiceCenter BELOW resFieldAddress
+    END
+*/
+
+FORM ID resFormIDSimpleSMSNoSend AT (0 0 160 160) MENUID resMenuIDSimpleSMS
+BEGIN
+    TITLE "Simple SMS"
+
+    LABEL "Receive Only" ID resLabelReceiveOnly AT (50 70) USABLE FONT 1
+
+	GADGET ID resGadgetSignalLevel2 AT (130 0 16 12)
+	GADGET ID resGadgetMainBatteryLevel2 AT (150 0 10 12)
+END
+
+ALERT ID resAlertNotTreo
+ERROR
+  BEGIN
+    TITLE "Not a Treo"
+    MESSAGE "This application can only be used on a Treo product " \
+            "with a phone."
+    BUTTONS "Ok"
+  END
+
+ALERT ID resAlertPhoneLibrary
+ERROR
+  BEGIN
+    TITLE "Error: Phone Library"
+    MESSAGE "(^1) error#: (^2)"
+    BUTTONS "Ok"
+  END
+
+ALERT ID resAlertPhoneNotReady
+INFORMATION
+BEGIN
+	TITLE "Wireless Mode Not Ready"
+	MESSAGE  "Wireless Mode must be on for at least 30 seconds."
+	BUTTONS  "OK" 
+END
+
+ALERT ID resAlertCantRegisterWithSMSLibrary
+ERROR
+BEGIN
+	TITLE "Error"
+	MESSAGE  "Could not register with the SMS Library."
+	BUTTONS  "OK" 
+END
+
+ALERT ID resAlertNotRegistered
+ERROR
+BEGIN
+	TITLE "Not On Network"
+	MESSAGE  "The Communicator has not been registered on the network."
+	BUTTONS  "OK" 
+END
+
+ALERT ID resAlertIncomingMessage
+INFORMATION
+BEGIN
+	TITLE "Incoming Message"
+	MESSAGE  "A message has been received:\n" \
+         	"\n" \
+         	"Address: ^1\n" \
+         	"Text: ^2"
+	BUTTONS  "OK" 
+END
+
+ALERT ID resAlertIncomingNBSMessage
+INFORMATION
+BEGIN
+	TITLE "Incoming NBS Message"
+	MESSAGE  "An NBS message has been received:\n" \
+            "From:^1\n" \
+            "To/From Port:^2\n" \
+			"Payload:\n" \
+			"^3"
+	BUTTONS  "OK" 
+END
+
+ALERT ID resAlertSuccessfulTransfer
+INFORMATION
+BEGIN
+	TITLE "Success!"
+	MESSAGE  "The message has been sent."
+	BUTTONS  "OK" 
+END
+
+ALERT ID resAlertUnsuccessfulTransfer
+ERROR
+BEGIN
+	TITLE "Error"
+	MESSAGE  "There was an error when trying to send the message."
+	BUTTONS  "OK" 
+END
+
+ALERT ID resAlertNoAddressInput
+ERROR
+BEGIN
+	TITLE "Error"
+	MESSAGE  "Please enter a phone number first and send again"
+	BUTTONS  "OK" 
+END

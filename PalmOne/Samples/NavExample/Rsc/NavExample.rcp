@@ -1,0 +1,274 @@
+// =======================================================
+// NavExample Resource File
+//
+// Copyright (c) 2003 Handspring, Inc.
+// All rights reserved.
+//
+// =======================================================
+
+#include "NavExampleRsc.h"
+
+
+// =======================================================
+// Menu Resources
+// =======================================================
+
+MENU ID rscMainMenu 
+BEGIN
+  PULLDOWN "Options"
+  BEGIN
+    MENUITEM "Preferences" rscMenuItemPreferences 
+  END
+  PULLDOWN "Help"
+  BEGIN
+    MENUITEM "About" rscMenuItemAbout
+  END
+END
+
+
+// =======================================================
+// Form Resources
+// =======================================================
+
+FORM ID rscMainForm AT (0 0 160 160)
+NOFRAME
+MENUID rscMainMenu
+BEGIN
+  TITLE  "NavExample"
+
+  BUTTON 
+         "Open"  
+         ID rscMainOpenButton   
+         AT (35 139 AUTO AUTO) 
+         LEFTANCHOR
+
+  BUTTON 
+         "Table"  
+         ID rscMainTableButton   
+         AT (87 139 AUTO AUTO) 
+         LEFTANCHOR
+  LIST   
+         "All" "appl" "ovly"
+         ID rscMainTypeList	
+         AT (53 22 54 33) 
+         NONUSABLE
+
+  LIST	 
+	 "TEST"
+         ID rscMainDBList		
+         AT (15 43 130 88)
+
+  POPUPTRIGGER
+         "appl"		
+         ID rscMainTypePopTrigger	
+         AT (58 24 34 12) 
+         LEFTANCHOR
+
+  POPUPLIST
+         ID rscMainTypePopTrigger rscMainTypeList
+END
+
+FORM ID rscTableForm AT (0 0 160 160)
+NOFRAME
+MENUID rscMainMenu
+MODAL
+BEGIN
+  TITLE  "NavExample"
+
+  BUTTON 
+         "Main"  
+         ID rscTableMainButton   
+         AT (1 147 AUTO AUTO) 
+         LEFTANCHOR
+
+  TABLE
+	 ID rscTableSampleTable
+	 AT (2 18 150 121)
+	 ROWS 11
+	 COLUMNS 3
+	 COLUMNWIDTHS 20 65 65
+END
+
+// =======================================================
+// Alert Resources
+// =======================================================
+
+FORM ID rscPreferencesForm AT (2 36 156 122)
+FRAME
+MODAL
+USABLE
+BEGIN
+  TITLE	"Preferences"
+
+  BUTTON	
+         "OK"
+         ID rscPreferencesOKButton
+         AT (9 104 36 12) 
+         LEFTANCHOR
+
+  BUTTON
+         "Cancel"
+         ID rscPreferencesCancelButton
+         AT (51 104 36 12) 
+         LEFTANCHOR
+
+  CHECKBOX
+         "Item1"
+         ID rscPreferencesItem1Checkbox
+         AT (45 44 43 12) 
+         GROUP 0 CHECKED LEFTANCHOR
+
+  CHECKBOX
+         "Item2"
+         ID rscPreferencesItem2Checkbox
+         AT (45 58 43 12) 
+         GROUP 0 CHECKED LEFTANCHOR
+
+  CHECKBOX
+         "Item3"	
+         ID rscPreferencesItem3Checkbox
+         AT (45 72 43 12) 
+         GROUP 0 CHECKED LEFTANCHOR
+
+  CHECKBOX
+         "Item4"
+         ID rscPreferencesItem4Checkbox
+         AT (45 86 43 12) 
+         GROUP 0 CHECKED LEFTANCHOR
+
+  CHECKBOX
+         "Item5"	
+         ID rscPreferencesItem5Checkbox	
+         AT (45 30 43 12) 
+         GROUP 0 CHECKED LEFTANCHOR
+
+  LABEL	
+         "Resources:"
+         ID rscPreferencesLabelLabel
+         AT (45 14) 
+         FONT 1
+END
+
+
+// =======================================================
+// Alert Resources
+// =======================================================
+
+ALERT ID rscRomIncompatibleAlert 
+ERROR
+BEGIN
+  TITLE	   "System Incompatible"
+  MESSAGE  "System Version 2.0 or greater is required to run this application."
+  BUTTONS  "OK" 
+END
+
+
+ALERT ID rscNoDatabasesAlert 
+WARNING
+BEGIN
+  TITLE    "No Databases"
+  MESSAGE  "No Resource Databases Are Available."
+  BUTTONS  "OK" 
+END
+
+
+ALERT ID rscAlertAbout
+INFORMATION
+BEGIN
+  TITLE	   "About NavExample"
+  MESSAGE  "NavExample version 1.3"
+  BUTTONS  "OK"
+END
+
+
+ALERT ID rscAlertOpen
+INFORMATION
+BEGIN
+  TITLE	   "Open Database"
+  MESSAGE  "This is where we would open the database..."
+  BUTTONS  "OK"
+END
+ 
+/*
+NAVIGATION ID rscTableForm
+    INITIALSTATE 0x00000001
+    INITIALOBJECTID rscTableMainButton
+    JUMPOBJECTID rscTableSampleTable
+    BEGIN
+      ID rscTableSampleTable BELOW rscTableMainButton
+      ID rscTableMainButton ABOVE rscTableSampleTable
+    END
+*/
+// =======================================================
+// NAV Resources
+// =======================================================
+// If you use Handspring's version of Palm-RC then you could
+// use the code commented. We modified Palm-RC to make the 
+// code more readable for 5-way navigation definition
+// If you're not using Palm-RC then you have to write
+// HEX resources in "byte-mode" and this will be more
+// difficult to read.
+
+// Header
+//0x0001.w						// Resource version 
+//0x0004.w						// Objects in focus order 
+//0x0014.w						// Size of header
+//0x0008.w						// Size of list elements
+//0x00000001.l						// navFlags = kNavForceObjectFocusMode
+//rscMainDBList.w					// ID of initial focus object 1003 = 03EB
+//rscMainOpenButton.w					// ID of jump to object       1001 = 03E9
+//0x0000.w						// ID of bottom-left object
+//0x0000.w						// Padding
+
+//rscMainTypePopTrigger.w				// ID of object               1004 = 03EC
+//0x0000.w						// objectFlags = none
+//0x0000.w						// ID of above object
+//0x0000.w						// ID of below object
+
+//rscMainDBList.w					// ID of object               1003 = 03EB
+//0x0000.w						// objectFlags = none
+//0x0000.w						// ID of above object
+//0x0000.w						// ID of below object
+
+//rscMainOpenButton.w					// ID of object               1001 = 03E9
+//0x0000.w						// objectFlags = none
+//0x0000.w						// ID of above object
+//0x0000.w						// ID of below object
+
+//rscMainTableButton.w					// ID of object               1005 = 03ED
+//0x0000.w						// objectFlags = none
+//0x0000.w						// ID of above object
+//0x0000.w						// ID of below object
+
+//this comment goes after line 215: Objects in tab order
+
+HEX "fnav" ID rscMainForm 
+0x00 0x01
+0x00 0x04
+0x00 0x14
+0x00 0x08
+0x00 0x00 0x00 0x01
+0x03 0xEB
+0x03 0xE9
+0x00 0x00
+0x00 0x00
+
+0x03 0xEC
+0x00 0x00
+0x00 0x00
+0x00 0x00
+
+0x03 0xEB
+0x00 0x00
+0x00 0x00
+0x00 0x00
+
+0x03 0xE9
+0x00 0x00
+0x00 0x00
+0x00 0x00
+
+0x03 0xED
+0x00 0x00
+0x00 0x00
+0x00 0x00

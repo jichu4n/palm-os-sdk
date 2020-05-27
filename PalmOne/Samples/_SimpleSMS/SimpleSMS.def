@@ -1,0 +1,2 @@
+application { "SimpleSMS" HSMS backup resetafterinstall}
+

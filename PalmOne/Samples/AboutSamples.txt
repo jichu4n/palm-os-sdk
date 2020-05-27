@@ -1,0 +1,315 @@
+ABOUT SAMPLES
+-------------
+The samples folder includes sample applications demonstrating the APIs in 
+the Palm OS SDK. For more information about each sample code, refer to the 
+readme file inside each folder.
+
+
+INSTALLATION
+------------
+To use the sample code without changing any settings (access paths in 
+CodeWarrior or Makefiles), copy the Samples directory to the
+same directory where the Incs folder for header files is located.
+
+
+NOTES
+-----
+Make sure the libraries needed for each sample code are present
+on the device.
+
+
+CONTENTS
+--------
+
+1.  AddEmailtoVersaMail
+    -------------------
+    This sample shows the different methods used to add a newly composed email
+    to VersaMail (via exchange manager, sub launch [not supported in VersaMail 3.0], UI).
+
+2.  BluetoothMgr
+    ------------
+    This sample demonstrates how to use the Bluetooth Library including
+    the Bluetooth Manager APIs and Socket and Service Discovery APIs. It
+    establishes an ACL connection between two Bluetooth enabled devices and
+    allows querying for the name of the connected device and sending a 
+    string from one device to the other.
+
+3.  BtClientServer
+    --------------
+    This sample uses the Serial Manager to implement a Bluetooth application 
+    that can be run in either client or server mode. The application sends 
+    files from the client to the server over Bluetooth.
+
+4.  CameraV2
+    --------
+    This sample shows how to use the Camera Manager library. Note:
+    that this library may not be available on older devices.
+
+5.  CameraV3
+    --------
+    This sample shows how to add basic camera/imaging functionality by using 
+    the Camera Manager library.
+
+6.  Conduit 
+    --------
+    The purpose of the Conduit sample application is to demonstrate how to 
+    synchronize between records on the handheld and records on the desktop.
+
+    The conduit includes three applications: 
+    1. MLConduit
+    2. MLDesktopApp
+    3. MLDeviceApp
+ 
+7.  CustomFav
+    ---------
+    This sample code shows how to use the Favorites DB Library to create custom 
+    favorites in the Phone app view (blue grid).
+
+8.  Extended Sound
+    --------------
+    This sample shows how to use the extended sound manager API, and features
+    recording, playback, etc.
+
+9.  FileBrowserSample
+    -----------------
+    This sample code shows how to use the FileBrowser API to browse through
+    files on the device and look for text files.
+    This sample code should be run on Life Drive and Tungsten T5 devices.
+
+10.  FiveWayV2
+    ---------
+    This sample code shows how to detect key presses/releases using the new
+    navigation APIs which support 5-way navigation (top, down, left, right,
+    center).
+
+11. FotoFinish
+    ----------
+    This sample code shows how to use the photo library APIs and provides simple
+    photo editing functionality.
+
+12. FotoFinish2
+    -----------
+    This sample code provides similar functionality to the FotoFinish sample application, 
+    except FotoFinish2 also uses version 2 photo library APIs.
+
+13. FullScreenWriting
+    -----------------
+    This sample code shows how to use GoLCD APIs that allow the user to write
+    graffiti on and provide input directly from the screen. 
+    
+14. HtmlLibTest68K
+    --------------
+    This sample code shows how to use the built-in HTML library to render
+    HTML data and display HTML pages on a Palm OS form.
+
+15. IRCommunication
+    ---------------
+    This sample code shows how to use the Serial Manager to transmit and receive 
+    Raw IR Data and IR COMM data. This sample code also shows how to wrap and 
+    unwrap the Raw Data in an IrDA packet.
+
+16. MemoryInfo
+    ----------
+    This sample code shows how to query the amount of free memory in the dynamic
+    heap and in the DBCache.
+
+17. MiniADPCM
+    ---------
+    This sample application shows how to encode and decode ADPCM samples using the 
+    Codec Plug-in Manager.
+
+18. MiniBuzzer
+    ----------
+    This sample code shows how to use the SoundFileStream library to record
+    and play various audio formats.
+
+19. MiniGIF
+    -------
+    This sample application shows how to encode and decode GIF images using 
+    the Codec Plug-in Manager.
+    
+20. MiniImage
+    ---------
+    This sample application shows how to use the image codecs to encode and 
+    decode between various file formats. 
+
+21. MiniMP3
+    -------
+    This sample code shows how to use the Codec Plug-in Manager to play MP3 files.
+ 
+22. MiniMPEG4
+    ---------
+    This sample application shows how to encode YCbCr420Planar and 
+    YCbCr422Planar to MPEG4 video format and decode MPEG4 video format to 
+    YCbCr420Planar format.
+
+23. NavExample
+    ----------
+    This sample application shows how to create a 5-way enabled app using 
+    the fnav resources. Refer to the rcp file for usage.
+    
+24. NetSelector
+    -----------
+    This sample code shows how to use the NetPref library to iterate through
+    existing network profiles in the Network panel and use the NetMaster library
+    to initiate data connection using a non-default profile.
+	
+25. NVFSTest
+    --------
+    This sample code shows how to commit database changes to the NAND drive while
+    an application is running and the database is open. 
+
+26. PmConnectorTest
+    ---------------
+    This sample application demonstrates the PmConnector Library APIs. It shows 
+    how to disable automatic detection of serial devices and how to enable/disable 
+    the power_out pin that supplies power to peripherals that are not Athena 
+    Multi-connector compliant.
+
+27. SerialCommunication
+    -------------------
+    This sample code shows how to use the Serial Manager to transmit and receive
+    serial data. It also shows how to detect a serial peripheral and how to 
+    Power On/Off the Multi-connector POWER_OUT pin. It additionally 
+    demonstrates how to work around the flow control problem on Tungsten T3.
+
+28. StatusBar
+    ---------
+    This sample code shows how to detect the Slider status on Tungsten T3.
+    It also shows how to detect the screen rotation on Tungsten T3 and Tungsten T5.
+
+29. TickStock
+    ---------
+    TickStock is a sample application that demonstrates:
+
+        - how to detect and handle incoming call interruption
+        - how to detect if device is using an EvDO connection
+        - downloading data while keeping the UI responsive
+        - implementing a [background] HTTP request as a state machine
+ 
+     The application connects to Yahoo! Finance website and downloads
+     the HTTP content until it finds the latest price of the queried stock.	
+
+30. TungstenT5FlowControl
+    ---------------------
+    This sample code shows how to enable/disable flow control on the Tungsten T5
+    device.
+
+31. TungstenT5SwitchAudio
+    ------------------------
+    This sample code shows how to switch audio from speaker to Multi-conenctor 
+    and from Multi-conenctor to speaker on Tungsten T5.
+
+32. TungstenT5SwitchAudioAlt
+    ------------------------
+    This sample code shows how to switch audio from speaker to Multi-connector
+    and from Multi-connector to speaker on Tungsten T5.
+	
+33. VersaMailAccConfig
+    ------------------
+    This sample application shows how to configure email accounts using the 
+    __MMDevice database.
+
+34. VersaMailAttchmntPlugin
+    -----------------------
+    This sample application is a VersaMail attachment plug-in for text plug-ins.
+
+35. VersaMailFontApp
+    ----------------
+    This sample application demonstrates the VersaMail Font Manager APIs. It 
+    shows how to change the size, style or font of text.
+
+-------------------------------------------------------------------------------
+Sample codes for Treo and Centro smartphones only:
+-------------------------------------------------------------------------------
+
+1.  _GSMStatus
+    ---------
+    This sample code shows how to retrieve operator status, name, and voicemail
+    count on GSM phones.
+	
+2.  _HelperReceiver
+    ---------------
+    This sample application shows how to use Palm's Helper APIs. It shows how 
+    to register, enumerate, validate and execute the system's helper 
+    notifications for SMS, Email, and WEB.
+
+3.  _HelperSender
+    ------------
+    This sample code shows how to use Palm's Helper APIs to broadcast helper
+    notifications for SMS, Email, and Web to registered applications.
+
+4.  _HTTPLibTest
+    -----------
+    This sample code demonstrates how to use the built-in shared HTTP Library.
+
+5.  _Keyguard
+    --------
+    This sample code shows how to activate the keyguard programmatically, and
+    also disable it each time an incoming SMS alert is detected.
+
+6.  _LaunchCommands
+    ---------------
+    This sample code shows how to use various Phone app launch commands to dial 
+    or show the keypad. It also shows how to launch the Web browser, including in 
+    minimal mode.
+
+7.  _MMSCounter
+    ----------
+    This sample code shows how to register an application for incoming message
+    notifications and retrieve the number of unread MMS messages.
+
+8.  _MMSReceiver
+    -----------
+    This sample code shows how to use Palm's Helper APIs to register, enumerate,
+    validate, and execute the system's helper notifications for MMS.
+
+9.  PalmPhotoCapturePreview
+    -----------------------
+    This sample code shows how to use the Palm Photo Library to use the Camera
+    interface to capture a photo, preview the photo, and save it to the device's 
+    photo album.   
+
+10.  _PhoneEventReceiver
+    ------------------
+    This sample application shows how to register for Phone Events PhnEvt*****
+    to receive phone event notifications from the phone library.
+
+11. _PhoneInfo
+    ----------
+    This sample application shows how to use the Palm Telephony Library to
+    display useful information.
+
+12. Pushdemo
+    ----------
+    This sample application shows how to set up a connection between your device (the           client) and a PC (the server), and use that connection to push packets of data from the     PC to your device.
+
+13. _RadioSample
+    -----------
+    This sample code shows how to detect if the radio is off or on, how to turn
+    on/off the radio, how to query the sim card for the phone number of the 
+    device, and how to check if the device has service available using the signal 
+    level.
+
+14. _REMTimer
+    -----------
+    This sample code shows how to programmatically register and put the device into 
+    normal sleep and REM sleep states.
+
+15. _RingTone
+    --------
+    This sample code shows how to get the list of tones from the system database,
+    play the tones, and stop tone play.
+
+16. _SimpleSMS
+    ---------
+    This sample code demonstrates how to use the built-in shared SMS Library.
+
+17. _STETest
+    -------
+    This sample application shows how to use the Palm Smart Text Engine.
+	
+18. Treo650PowerOut
+    ---------------
+    This sample code shows how to turn on/off the Multi-connector POWER_OUT pin
+    on Treo 650.
