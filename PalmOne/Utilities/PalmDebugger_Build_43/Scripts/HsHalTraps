@@ -1,0 +1,161 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;  HSHalTraps
+;
+;  This file has the trap definitions for Handspring's HAL
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+var "HalGetTrapAddress"                 0x00
+var "HalSetTrapAddress"                 0x01
+                      
+var "HalIrqEnable"                      0x02
+var "HalIrqHandlerSet"                  0x03
+                          
+var "HalPreUIInit"                      0x04
+                          
+var "HalCardAttrGet"                    0x05
+var "HalCardAttrSet"                    0x06
+
+var "HalUsbCommStatePtr"                0x07
+
+var "HalEeprom"                         0x08
+
+var "HalChargeIndicator_old"            0x09
+
+var "HalCardSleep"                      0x0A
+var "HalCardWake"                       0x0B
+var "HalTimerProc"                      0x0C
+
+var "HalPadHtalCncGetProfileInfo"       0x0D
+
+var "HalUnused0E"                       0x0E
+
+var "HalDatabaseCopy"                   0x0F
+
+var "HalPrvLaunchCompareFunc"           0x10
+
+var "HalSer2ReceiveISP"                 0x11
+var "HalSer2ISPDataGet"                 0x12
+var "HalSer2ISPDataSet"                 0x13
+
+var "HalLEDCommand"                     0x14
+
+var "HalModelAnimationBaseIDGet"        0x15
+
+var "HalPeriodicRegister"               0x16
+var "HalPeriodicUnregister"             0x17
+var "HalPeriodicPeriodsAvailable"       0x18
+var "HalPeriodicInterruptHandle"        0x19
+var "HalPeriodicInit"                   0x1A
+var "HalPeriodicSleep"                  0x1B
+var "HalPeriodicWake"                   0x1C
+
+var "HalPostUIInit"                     0x1D
+
+var "HalDisableLowbat"                  0x1E
+var "HalRestoreLowbat"                  0x1F
+
+var "HalAttrGet"                        0x20
+var "HalAttrSet"                        0x21
+
+var "halReserved22" 0x22
+
+var "HalCheckLowbat"                    0x23
+
+var "HalKeyCurrentStateExt"             0x24
+var "HalKeySetMaskExt"                  0x25
+var "HalKeyGrfSetStateExt"              0x26
+var "HalKeyGrfGetStateExt"              0x27
+var "HalKeyClearExtShiftState"          0x28
+var "HalKeySetKeyUpShiftState"          0x29
+var "HalKeyChrCodeToKeyBits"            0x2A
+var "HalKeyKeyBitsToChrCodes"           0x2B
+var "HalKeySetShiftTimeOut"             0x2C
+var "HalKeySetShiftState"               0x2D
+var "HalKeyResetInts"                   0x2E
+var "HalKeyIsWakeupKey"                 0x2F
+
+var "HalIrqConfig"                      0x30
+
+var "HalHwrAnalog"                      0x31
+
+var "HalIndicator"                      0x32
+
+var "HalIntervalHandleInterrupt"        0x33
+var "HalIntervalInit"                   0x34
+var "HalIntervalAlloc"                  0x35
+var "HalIntervalFree"                   0x36
+var "HalIntervalSet"                    0x37
+var "HalIntervalRead"                   0x38
+var "HalIntervalSleep"                  0x39
+var "HalIntervalWake"                   0x3A
+
+var "HalKeyKeysAvailable"               0x3B
+
+var "HalCallWithNewStack"               0x3C
+
+var "HalKeyDisableAutoRepeat"           0x3D
+
+var "HalKeyLayoutInit"                  0x3E
+
+var "HalPeriodicUnregisterFromSelf"     0x3F
+
+var "HalUnimplemented"                  0x40
+    
+var "HalKeylight"                       0x41
+var "HalLightInit"                      0x42
+var "HalLightSleep"                     0x43
+var "HalLightWake"                      0x44
+var "HalLightMode"                      0x45
+var "HalLightCircumstance"              0x46
+var "HalDisplaySleepReal"               0x47
+var "HalDisplayWakeReal"                0x48
+var "HalDisplayLowPowerForce"           0x49
+
+var "HalReserved352H5_4A"               0x4A
+var "HalReserved352H5_4B"               0x4B
+var "HalReserved352H5_4C"               0x4C
+var "HalReserved352H5_4D"               0x4D
+var "HalReserved352H5_4E"               0x4E
+var "HalReserved352H5_4F"               0x4F
+var "HalReserved352H5_50"               0x50
+var "HalReserved352H5_51"               0x51
+
+var "HalReserved352H6_52"               0x52
+var "HalReserved352H6_53"               0x53
+var "HalReserved352H6_54"               0x54
+var "HalReserved352H6_55"               0x55
+var "HalIrq6PinHandler"                 0x56
+var "HalReserved352H6_57"               0x57
+var "HalReserved352H6_58"               0x58
+var "HalReserved352H6_59"               0x59
+var "HalCatchIllegalCalls"              0x5A
+
+var "HalReserved352H6_5B"               0x5B
+var "HalReserved352H6_5C"               0x5C
+var "HalReserved352H6_5D"               0x5D
+var "HalReserved352H6_5E"               0x5E
+var "HalReserved352H6_5F"               0x5F
+
+
+
+;##############################################################
+; HAL trap debugging
+;
+; Setting/clearing a HAL trap breakpoint is a two step process:
+;  1. Assign 'halTrap' to the HAL trap number desired 
+;      (e.g. halTrap=HalUnimplemented)
+;  2. Use the 'htb' or 'htc' macro to set or clear the 
+;      hal trap breakpoint
+;##############################################################
+
+var "GHalTrapTableP" fc
+var "halTrap"
+
+alias "htb" "sl (@.l(GHalTrapTableP)+(4*halTrap)) @.l(@.l(GHalTrapTableP)+(4*halTrap))|1"
+alias "htc" "sl (@.l(GHalTrapTableP)+(4*halTrap)) @.l(@.l(GHalTrapTableP)+(4*halTrap))&FFFFFFFE"
+
+

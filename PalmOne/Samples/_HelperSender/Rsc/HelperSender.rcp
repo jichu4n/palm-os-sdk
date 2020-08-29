@@ -1,0 +1,159 @@
+#include "HelperSender.h"
+
+MENU ID MainOptionsMenu
+BEGIN
+	PULLDOWN "Options"
+	BEGIN
+		MENUITEM  "About" MainOptionsAbout
+	END
+END
+
+
+FORM ID MainForm AT (0 0 160 160)
+NOFRAME
+USABLE
+MENUID MainFormMenuBar
+BEGIN
+	TITLE  	"Helper Sender"
+	LABEL  	"Send Helper Request" ID MainHelperLabel 		AT (20 20) USABLE FONT 1
+	BUTTON 	"SMS"	ID MainHelperSMSSelectButton 	AT (30 60  100 12) 	LEFTANCHOR
+	BUTTON 	"Email" ID MainHelperMailSelectButton 	AT (30 90  100 12) 	LEFTANCHOR
+	BUTTON 	"Web" 	ID MainHelperWebSelectButton 	AT (30 120 100 12) 	LEFTANCHOR
+END
+
+
+FORM ID WebForm AT (2 82 156 76)
+FRAME
+MODAL
+SAVEBEHIND
+USABLE
+BEGIN
+	TITLE  	"Web"
+	LABEL  	"URL:" 		ID WebURLLabel 			AT (8 33)
+	BUTTON 	"Cancel" 	ID WebCancelButton		AT (4 60 36 12) 		LEFTANCHOR
+	BUTTON 	"Go" 		ID WebGoButton 			AT (44 60 36 12)		LEFTANCHOR
+	FIELD 				ID WebURLField 			AT (50 31 96 15)  	UNDERLINED MAXCHARS 80
+	GRAFFITISTATEINDICATOR  AT (149 148)  
+END
+
+
+FORM ID MailForm AT (2 2 156 156)
+FRAME
+MODAL
+SAVEBEHIND
+USABLE
+BEGIN
+	TITLE  	"Mail"
+	BUTTON 	"Cancel" 	ID MailCancelButton 	AT (5 141 36 12) 		LEFTANCHOR
+	BUTTON 	"Send" 		ID MailSendButton 		AT (45 141 36 12) 	LEFTANCHOR
+	LABEL  	"To:" 		ID MailToLabel 			AT (1 24)
+	LABEL  	"Subject:" 	ID MailSubjectLabel 	AT (1 57)
+	LABEL  	"cc:" 		ID MailCCLabel 			AT (1 38)
+	LABEL  	"Message:" 	ID MailMessageLabel 	AT (1 73)
+	FIELD 				ID MailToField 			AT (34 24 120 13)		MULTIPLELINES UNDERLINED MAXCHARS 2048
+	FIELD 				ID MailSubjectField 	AT (34 57 120 13)  	MULTIPLELINES UNDERLINED MAXCHARS 2048
+	FIELD 				ID MailCCField 			AT (34 38 120 13)  	MULTIPLELINES UNDERLINED MAXCHARS 2048
+	FIELD 				ID MailMessageField 	AT (35 84 120 52)  	MULTIPLELINES UNDERLINED MAXCHARS 16384
+	GRAFFITISTATEINDICATOR  AT (149 148)
+END
+
+
+FORM ID SMSForm AT (2 52 156 106)
+FRAME
+MODAL
+SAVEBEHIND
+USABLE
+BEGIN
+	TITLE  	"SMS"
+	BUTTON 	"Cancel" 	ID SMSCancelButton		AT (4 91 36 12) 		LEFTANCHOR
+	BUTTON 	"Send" 		ID SMSSendButton		AT (44 91 36 12) 		LEFTANCHOR
+	LABEL  	"To:" 		ID SMSToLabel			AT (5 15)
+	LABEL  	"Message:" 	ID SMSMessageLabel		AT (4 31)
+	FIELD 				ID SMSToField			AT (32 15 124 13)  	MULTIPLELINES DYNAMICSIZE UNDERLINED MAXCHARS 80
+	FIELD 				ID SMSMessageField		AT (32 48 124 38)  	MULTIPLELINES DYNAMICSIZE UNDERLINED MAXCHARS 640
+	GRAFFITISTATEINDICATOR  AT (149 148)
+END
+
+ALERT ID RomIncompatibleAlert
+ERROR
+BEGIN
+	TITLE "System Incompatible"
+	MESSAGE  "System Version 2.0 or greater is required to run this application."
+	BUTTONS  "OK" 
+END
+
+
+ALERT ID RscUnregisterFailedAlert
+ERROR
+BEGIN
+	TITLE "Notification Unregistration Error"
+	MESSAGE  "Error unregistering from Notification Manager: ^1."
+	BUTTONS  "OK" 
+END
+
+
+ALERT ID RscRegisterFailedAlert
+ERROR
+BEGIN
+	TITLE "Notification Registration Error"
+	MESSAGE  "Error registering with Notification Manager: ^1."
+	BUTTONS  "OK" 
+END
+
+
+ALERT ID RscNotificationFailedAlert
+ERROR
+BEGIN
+	TITLE "Notification Failed"
+	MESSAGE  "Notification failed: ^1."
+	BUTTONS  "OK" 
+END
+
+
+ALERT ID RscNotificationArrivedAlert
+INFORMATION
+BEGIN
+	TITLE "Notification"
+	MESSAGE  "Notification Arrived: ^1."
+	BUTTONS  "OK" 
+END
+
+
+ALERT ID RscServiceExistsAlert
+INFORMATION
+BEGIN
+	TITLE "Available Services"
+	MESSAGE  "Services Available: ^1."
+	BUTTONS  "OK" 
+END
+
+
+ALERT ID NotificationIncompatibleAlert
+ERROR
+BEGIN
+	TITLE "Notification Incompatibility"
+	MESSAGE  "This system is not capable of notifications."
+	BUTTONS  "OK" 
+END
+
+
+ALERT ID RscUnknownServiceAlert
+WARNING
+BEGIN
+	TITLE "Unknown Service"
+	MESSAGE  "This is an unknown service, please select something else."
+	BUTTONS  "OK" 
+END
+
+
+ALERT ID RscNotHandledAlert
+WARNING
+BEGIN
+	TITLE "Notification Not Handled"
+	MESSAGE  "Helper service did not handle the 'execute' notification."
+	BUTTONS  "OK" 
+END
+
+APPLICATIONICONNAME ID 1000 "HelperSender" 
+
+VERSION ID 1000 "1.0" 

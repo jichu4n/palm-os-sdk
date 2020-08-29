@@ -1,0 +1,2 @@
+application { "HelperReceiver" TRHR backup resetafterinstall}
+

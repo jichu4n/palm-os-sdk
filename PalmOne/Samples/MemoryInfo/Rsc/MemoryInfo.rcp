@@ -1,0 +1,71 @@
+
+#include "MemoryInfoRsc.h"
+
+APPLICATIONICONNAME ID ApplicationIconName "Memory Info"
+VERSION             ID ApplicationVersion  "1.0"
+LAUNCHERCATEGORY    "Debug"       // DO NOT TRANSLATE...
+
+ALERT InformationAlert
+INFORMATION
+BEGIN
+     TITLE "Debug"
+     MESSAGE "^1 ^2 ^3"
+	 BUTTONS "OK"
+END
+
+BITMAPCOLOR ID 3000 "palm logo.bmp" COMPRESS
+
+FORM ID AboutForm AT (2 2 156 156)
+FRAME
+MODAL
+SAVEBEHIND
+USABLE
+BEGIN
+	TITLE "About MemoryInfo"
+	FORMBITMAP AT (2 16) BITMAP 3000 USABLE
+	LABEL "MemoryInfo" ID AboutUnnamed1602Label AT (75 30) FONT 1 USABLE
+	LABEL "Version 1.0" ID AboutUnnamed1608Label AT (75 42) FONT 1 USABLE
+	LABEL "By DTS" ID AboutUnnamed1603Label AT (75 54) FONT 1 USABLE
+	LABEL "Copyright (c) 2007 Palm, Inc." ID AboutUnnamed1605Label AT (8 93) FONT 1 USABLE
+	LABEL "All rights reserved." ID AboutUnnamed1607Label AT (31 105) FONT 1 USABLE
+	BUTTON "OK" ID AboutUnnamed1606Button AT (60 139 36 12) USABLE LEFTANCHOR FRAME
+END
+
+MENU ID 2002
+BEGIN
+	PULLDOWN "Help"
+	BEGIN
+		MENUITEM "About MemoryInfo" HelpMenu 
+	END
+END
+
+FORM ID MainForm AT (0 0 160 160)
+FRAME
+USABLE
+MENUID 2002
+  BEGIN
+    TITLE "Memory Info"
+
+	LABEL "Storage Heap (Flash)" ID MainFormFlashLabel AT (5 15) USABLE FONT 1
+    LABEL "Total Size:" ID MainFormTotalFlashStorageLabel AT (5 27) USABLE FONT 0
+    FIELD ID MainFormTotalFlashStorageField AT (105 PREVTOP 50 12) USABLE RIGHTALIGN SINGLELINE FONT 0 NONEDITABLE
+    LABEL "Total Free:" ID MainFormFreeFlashStorageLabel AT (5 39) USABLE FONT 0
+    FIELD ID MainFormFreeFlashStorageField AT (105 PREVTOP 50 12) USABLE RIGHTALIGN SINGLELINE FONT 0 NONEDITABLE
+
+
+	LABEL "NVFS Cache (RAM)" ID MainFormDbCacheLabel AT (5 57) USABLE FONT 1
+    LABEL "Total Size:" ID MainFormTotalDbCacheLabel AT (5 69) USABLE FONT 0
+    FIELD ID MainFormTotalDbCacheField AT (105 PREVTOP 50 12) USABLE RIGHTALIGN SINGLELINE FONT 0 NONEDITABLE
+    LABEL "Total Free:" ID MainFormFreeDbCacheLabel AT (5 81) USABLE FONT 0
+    FIELD ID MainFormFreeDbCacheField AT (105 PREVTOP 50 12) USABLE RIGHTALIGN SINGLELINE FONT 0 NONEDITABLE
+    LABEL "Largest Free Chunk:" ID MainFormLargestDbCacheLabel AT (5 93) USABLE FONT 0
+    FIELD ID MainFormLargestDbCacheField AT (105 PREVTOP 50 12) USABLE RIGHTALIGN SINGLELINE FONT 0 NONEDITABLE
+
+	LABEL "Dynamic Heap (RAM)" ID MainFormDheapLabel AT (5 111) USABLE FONT 1
+    LABEL "Total Size:" ID MainFormTotalDheapLabel AT (5 123) USABLE FONT 0
+    FIELD ID MainFormTotalDheapField AT (105 PREVTOP 50 12) USABLE RIGHTALIGN SINGLELINE FONT 0 NONEDITABLE
+    LABEL "Total Free:" ID MainFormFreeDheapLabel AT (5 135) USABLE FONT 0
+    FIELD ID MainFormFreeDheapField AT (105 PREVTOP 50 12) USABLE RIGHTALIGN SINGLELINE FONT 0 NONEDITABLE
+    LABEL "Largest Free Chunk:" ID MainFormLargestDheapLabel AT (5 147) USABLE FONT 0
+    FIELD ID MainFormLargestDheapField AT (105 PREVTOP 50 12) USABLE RIGHTALIGN SINGLELINE FONT 0 NONEDITABLE
+  END

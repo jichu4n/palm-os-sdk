@@ -1,0 +1,274 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;  VersaMail Types
+;
+;  This file contains useful typedefs and macros for working
+;  with VersaMail 3 and 4.  
+;
+;  Stuart Eichert
+;  August 28th, 2007
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Basic typedefs
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+typedef UInt8  "IDATATYPE"
+typedef UInt32 "SAVEMASK"
+typedef UInt16 "MsgAccountNumber"
+typedef UInt8  "MsgFlags"
+typedef UInt32 "MDataPersistentFolderID"
+typedef UInt32 "MDataPersistentAccountID"
+typedef UInt8  "MsgFolderIDInRec"
+typedef UInt16 "MsgFolderID"
+typedef UInt8  "BGTransportType"
+typedef UInt8  "DriverType"
+typedef MemPtr "BGConverseStateFP"
+typedef MemPtr "BGEventFP"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Structures
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+typedef struct "ATTLINK"
+    > ATTLINK   @"pPrevAttLink"
+    > ATTLINK   @"pNextAttLink"
+    > MemHandle "hAttData"
+    > UInt32    "dataSize"
+    > UInt32    "dataOffset"
+    > UInt32    "uniqueID"
+    > UInt16    "index"
+    > UInt8     "sequenceNum"
+    typeend
+
+typedef struct "DATAHANDLE"
+    > IDATATYPE     "m_DataType"
+    > Boolean       "m_bIsLocked"
+    > Boolean       "m_bFreeAllParents"
+    > UInt32        "m_UniqueID"
+    > UInt16        "m_recIndex"
+    > MemHandle     "m_recHandle"
+    > MemPtr        "m_hData"
+    > DATAHANDLE    @"m_phParent"
+    > Boolean       "m_bHasSyncContext"
+    > UInt32        "m_ClientContext"
+    typeend
+
+typedef struct "ATTDATAHANDLE"
+    > SAVEMASK      "attSaveMask"
+    > UInt32        "refCount"
+    > UInt32        "attType"
+    > UInt32        "attTotalSize"
+    > UInt32        "attCurrentSize"
+    > UInt32        "sequenceNums"
+    > MemHandle     "hAttServerID"
+    > MemHandle     "hAttName"
+    > ATTLINK       @"pFirstAttLink"
+    > ATTLINK       @"pCurrentAttLink"
+    > ATTLINK       @"pLastAttLink"
+    > Boolean       "bIsUnpacked"
+    > Boolean       "bIsUpdated"
+    > Boolean       "bStreamReadOccurred"
+    > Int32         "numExistingRecords"
+    > Boolean       "bInFileStorage"
+    > Boolean       "bIsBusy"
+    > UInt32        "statusValue"
+    typeend
+
+typedef struct "SaveMessageWithAttIDsArgs"
+    > MsgAccountNumber      "account"
+    > CharPtr               "to"
+    > CharPtr               "from"
+    > CharPtr               "cc"
+    > CharPtr               "bcc"
+    > CharPtr               "subject"
+    > CharPtr               "date"
+    > CharPtr               "msgID"
+    > CharPtr               "text"
+    > CharPtr               "replyTo"
+    > UInt32                "uid"
+    > UInt16                "category"
+    > UInt32                "selected"
+    > UInt32                "size"
+    > UInt32                "priority"
+    > Boolean               "bRead"
+    > UInt16                "HTMLsetting"
+    > UInt16                "pos"
+    > DmOpenRef             "mmDB"
+    > CharPtr               "popID"
+    > Boolean               "msgComplete"
+    > UInt32                @"attIDs"
+    > MemPtr                "hMsgToOverwrite"
+typeend
+
+typedef struct "mailMessage"
+    > CharPtr                   "to"
+    > CharPtr                   "from"
+    > CharPtr                   "cc"
+    > CharPtr                   "bcc"
+    > CharPtr                   "subject"
+    > CharPtr                   "date"
+    > CharPtr                   "messageId"
+    > CharPtr                   "body"
+    > CharPtr                   "replyTo"
+    > CharPtr                   "srvrIDofOrigMsg"
+    > UInt32                    @"pattachments"
+    > MsgFlags                  "msgFlags"
+    > MDataPersistentFolderID   "originalFolderPID"
+    > MsgFolderIDInRec          "originalFolder"
+    > MDataPersistentFolderID   "currentFolderPID"
+    > MsgFolderID               "currentFolder"
+    > UInt16                    "acctIndex"
+    > UInt16                    "ToLen"
+    > UInt16                    "FromLen"
+    > UInt16                    "CCLen"
+    > UInt16                    "BCCLen"
+    > UInt16                    "SubjectLen"
+    > UInt16                    "DateLen"
+    > UInt32                    "BodyLen"
+    > UInt16                    "MsgIdLen"
+    > UInt16                    "ReplyToLen"
+    > UInt16                    "SrvrIDofOrigMsgLen"
+    > UInt16                    "NumAttachments"
+    > UInt32                    "currentBodySize"
+    > UInt32                    "totalBodySize"
+    > UInt32                    "selected"
+    > UInt32                    "totalMsgSize"
+    > UInt32                    "read"
+    > UInt32                    "dateInt"
+    > UInt32                    "future1"
+    > UInt32                    "future2"
+    > UInt32                    "Dirty"
+    > Boolean                   "bIsClone"
+    > Boolean                   "bSavedClone"
+    > Boolean                   "bIsUnpacked"
+    > MemHandle                 "bodyH"
+typeend
+
+typedef struct "BGTransport"
+    > MemPtr                    "BGTrnAvailForBG"
+    > MemPtr                    "BGTrnInit"
+    > MemPtr                    "BGTrnTerm"
+    > MemPtr                    "BGTrnInited"
+    > MemPtr                    "BGTrnDiscover"
+    > MemPtr                    "BGTrnRunServer"
+    > MemPtr                    "BGTrnInitTxn"
+    > MemPtr                    "BGTrnConnect"
+    > MemPtr                    "BGTrnDisconnect"
+    > MemPtr                    "BGTrnSend"
+    > MemPtr                    "BGTrnRecv"
+    > MemPtr                    "BGTrnResetBuffers"
+    > MemPtr                    "BGTrnLastProtocolErr"
+    > MemPtr                    "BGTrnDataSz"
+    > MemPtr                    "BGTrnPackFn"
+    > MemPtr                    "BGTrnUnpackFn"
+    > MemPtr                    "BGTrnFree"
+    > MemPtr                    "BGTrnCopy"
+    > MemPtr                    "BGTrnSetBackgroundBit"
+    > MemPtr                    "BGTrnXmitComplete"
+    > MemPtr                    "BGTrnPrimeTriggerConnection"
+    > BGTransportType           "transport"
+typeend
+
+typedef struct "BGRequestBase"
+    > Boolean                   "netRqst"
+    > BGTransport               "transport"
+    > MemPtr                    "connectInfo"
+    > MemPtr                    "initInfo"
+    > UInt16                    "cmd"
+    > UInt16                    "rqstDelay"
+    > CharPtr                   "pAPN"
+    > UInt16                    "flags"
+    > UInt8                     "rqstState"
+    > UInt8                     "cmdState"
+    > UInt32                    "cmdStartTime"
+    > UInt32                    "rqstStartTime"
+    > Char                      "rqstData"[#220] \-
+    > UInt8                     "type"
+typeend
+
+typedef struct "BGConverseRequest"
+    > UInt8                     "rqstConverseType"
+    > DriverType                "driverType"
+    > BGConverseStateFP         "stateMachine"
+    > BGEventFP                 "cancelCB"
+    > Boolean                   "client"
+    > BGConverseStateFP         "nextState"
+    > MemHandle                 "requH"
+    > UInt32                    "rspSz"
+    > Int32                     "contentLen"
+    > Boolean                   "retry"
+    > Boolean                   "debug"
+typeend
+
+typedef struct "BGRequestConverseRequest"
+    > Boolean                   "netRqst"
+    > BGTransport               "transport"
+    > MemPtr                    "connectInfo"
+    > MemPtr                    "initInfo"
+    > UInt16                    "cmd"
+    > UInt16                    "rqstDelay"
+    > CharPtr                   "pAPN"
+    > UInt16                    "flags"
+    > UInt8                     "rqstState"
+    > UInt8                     "cmdState"
+    > UInt32                    "cmdStartTime"
+    > UInt32                    "rqstStartTime"
+    > Char                      "rqstData"[#220] \-
+    > UInt8                     "type"
+    > BGConverseRequest         "data.cd"
+    > MemPtr                    "precvResponseFunc"
+    > UInt32                    "opaque"
+    > MemHandle                 "respH"
+    > UInt16                    "requestTimeout"
+    > UInt8                     "netRqstType"
+typeend
+
+
+typedef struct "BGResult"
+    > UInt32                    "majorResult"
+    > UInt32                    "protocolErr"
+    > Char                      "protocolErrString"[#100] \-
+typeend
+
+typedef struct "StopWatch"
+    > UInt32                    "start"
+    > UInt32                    "stop"
+    > UInt32                    "time"
+typeend
+
+typedef struct "BGProcess"
+    > BGTransport               "m_trnsprt"
+    > MemPtr                    "m_prqst"
+    > UInt32                    "m_rqstDBUID"
+    > MemPtr                    "m_pnetH"
+    > MemPtr                    "m_pnetTaskH"
+    > MemPtr                    "m_pinetH"
+    > BGResult                  "result"
+    > StopWatch                 "watch"
+    > UInt16                    "nMsCalls"
+    > UInt16                    "nMsUiBusy"
+    > UInt16                    "nMsStalls"
+typeend
+
+typedef struct "A4Handle"
+    > MemPtr                    "pa4Chunk"
+    > MemPtr                    "pa4Value"
+typeend
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Function arguments
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+typedef struct "AirSAMConditionalPingArgs"
+    > MDataPersistentAccountID  "acctPID"
+    > Boolean                   "notify"
+    > UInt16                    "samgrRefNum"
+    > UInt16                    "idataRefNum"
+typeend

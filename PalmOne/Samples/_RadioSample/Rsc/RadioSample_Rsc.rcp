@@ -1,0 +1,71 @@
+/***************************************************************************\
+*
+* File: RadioSample.rcp
+*
+* 
+*
+\***************************************************************************/
+
+GENERATEHEADER "RadioSample_Rsc.h"
+RESETAUTOID 1000
+
+
+SMALLICONFAMILYEX
+BEGIN
+	BITMAP "RadioSample_BitmapID_1201-1.bmp" BPP 1 DENSITY 1
+	BITMAP "RadioSample_BitmapID_1218-8.bmp" BPP 8 DENSITY 2 TRANSPARENTINDEX 0
+END
+
+
+
+ICONFAMILYEX
+BEGIN
+	BITMAP "RadioSample_BitmapI_1101-32.bmp" BPP 1 DENSITY 1
+	BITMAP "RadioSample_BitmapID_1118-8.bmp" BPP 8 DENSITY 2 TRANSPARENTINDEX 0
+END
+
+
+
+
+FORM ID MainForm AT (0 0 160 160)
+NOFRAME
+NOSAVEBEHIND
+USABLE
+MENUID MainOptionsMenu
+BEGIN
+	TITLE "Treo"
+	LABEL "Radio" ID MainRadioLabel AT (11 23) FONT 1 USABLE
+	FIELD ID MainRadioField AT (46 17 70 19)  USABLE EDITABLE SINGLELINE UNDERLINED LEFTALIGN MAXCHARS 80
+	BUTTON "Get Mobile Info" ID MainMobileButton AT (36 131 64 12) USABLE LEFTANCHOR FRAME
+	FIELD ID MainSignalLevelField AT (73 94 71 17)  USABLE EDITABLE SINGLELINE UNDERLINED LEFTALIGN MAXCHARS 80
+	BUTTON "Radio On" ID MainRadioOnButton AT (11 39 43 15) USABLE LEFTANCHOR FRAME
+	FIELD ID MainPhoneField AT (10 72 110 19)  USABLE EDITABLE SINGLELINE UNDERLINED LEFTALIGN MAXCHARS 80
+	BUTTON "RadioOff" ID MainRadioOffButton AT (66 39 43 15) USABLE LEFTANCHOR FRAME
+	FIELD ID MainDebugField AT (11 144 142 13)  USABLE EDITABLE SINGLELINE UNDERLINED LEFTALIGN MAXCHARS 80
+	LABEL "Phone #" ID MainPhoneLabel AT (11 58) FONT 1 USABLE
+	LABEL "Signal Level" ID MainSignalLevelLabel AT (10 96) FONT 1 USABLE
+	GRAFFITISTATEINDICATOR AT (135 150)
+END
+
+
+MENU ID MainOptionsMenu
+BEGIN
+	PULLDOWN "Options"
+	BEGIN
+		MENUITEM  "About RadioSample" MainOptionsAbout
+	END
+END
+
+ALERT ID RomIncompatibleAlert 
+ERROR
+BEGIN
+	TITLE "System Incompatible"
+	MESSAGE "System Version 5.0 or greater is required to run this application. ^1 ^2 ^3"
+	BUTTONS "OK"  
+END
+
+HEX "pref" ID 0 
+		0x00 0x1E 0x00 0x00 0x10 0x00 0x00 0x00 0x10 0x00 
+
+HEX "xprf" ID 0 
+		0x00 0x01 0x00 0x00 0x00 0x00 

@@ -1,0 +1,26 @@
+Trace Viewer Instructions
+-------------------------
+
+Getting a Trace Dump from the Trace Viewer App
+
+	 1. Go to TV app on the device
+	 2. Hit Clear
+	 3. Enter components if instructed to do so:
+		For GSM it is comon to set: GSM! and Lib! as the comp ID and Sub Comp ID
+		Check Trace Level and Trace output are set to All
+	 4. Reproduce the bug
+	 5. Launch Palm Debugger
+	 6. Attach to Debugger
+	 7. Shortcut . 1 on device
+	 8. Enter "g" into Debugger and return
+	 9. Press Dump button in TV App
+	10. Save the output as a text file (use notepad, not wordpad)
+	11. Add to the beginning the file this line:
+		<?xml-stylesheet type="text/xsl" href="Developer Trace Log.xsl" ?>
+	12. Change the file name suffix from .txt to .xml
+	13. Save it to a location
+	14. If you want to view the trace...
+		Save Developer Trace Log.xsl file to the same location as the XML file above
+		Open the .xml file with IE 6 to view
+
+

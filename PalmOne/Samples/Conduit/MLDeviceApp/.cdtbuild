@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fileVersion 2.0.0?>
+
+<ManagedProjectBuildInfo>
+<target id="MusicLib.com.palmsource.eclipse.palmos4dev.target.m68k_palmos.exe.1043795369" name="Palm OS 68K Application" parent="com.palmsource.eclipse.palmos4dev.target.m68k_palmos.exe" isAbstract="false" artifactName="MusicLib" isTest="false">
+<configuration id="target.m68k_palmos.exe.debug.1038024136" name="Debug" parent="target.m68k_palmos.exe.debug">
+<toolReference id="com.palmsource.eclipse.palmostools.compiler.palmrc" command="&quot;$(TOOLS_DIR)PalmRC&quot;" outputPrefix="" inputFlag="" outputFlag="-o" outputs="trc">
+<optionReference id="tool.compiler.palmrc.option.otherFlags">
+<listOptionValue value="-p PalmOS4" builtIn="false"/>
+</optionReference>
+<optionReference id="tool.compiler.palmrc.option.locale" defaultValue=" enUS"/>
+<optionReference id="tool.compiler.palmrc.option.overlayFilter" defaultValue="None specified"/>
+<optionReference id="tool.compiler.palmrc.option.encodingTarget" defaultValue="Palm OS Latin"/>
+<optionReference id="tool.compiler.palmrc.option.strictEncoding" defaultValue="true"/>
+<optionReference id="tool.compiler.palmrc.option.noWarnSize" defaultValue="false"/>
+</toolReference>
+<toolReference id="com.palmsource.eclipse.palmos4dev.compiler.m68k_palmos" command="m68k-palmos-gcc -c" outputPrefix="" inputFlag="" outputFlag="-o" outputs="o">
+<optionReference id="tool.compiler.gcc.68K.option.optLevel" defaultValue="None (-O0)"/>
+<optionReference id="tool.compiler.gcc.68K.option.debugLevel" defaultValue="Default (-g)"/>
+<optionReference id="tool.compiler.gcc.68K.option.defineSymbols">
+<listOptionValue value="__PALMOS__=0x05000000" builtIn="false"/>
+</optionReference>
+<optionReference id="tool.compiler.gcc.68K.option.includeDirs">
+<listOptionValue value="&quot;$(TOOLS_DIR)include/stlport&quot;" builtIn="false"/>
+</optionReference>
+<optionReference id="tool.compiler.gcc.68K.option.exceptions" defaultValue="Enable (-fexceptions)"/>
+<optionReference id="tool.compiler.gcc.68K.option.assertions" defaultValue="Enable (-UNDEBUG)"/>
+<optionReference id="tool.compiler.gcc.68K.option.warningLevel" defaultValue="All (-Wall)"/>
+</toolReference>
+<toolReference id="com.palmsource.eclipse.palmos4dev.linker.m68k_palmos" command="m68k-palmos-gcc" outputPrefix="" inputFlag="" outputFlag="-o" outputs="">
+<optionReference id="tool.linker.gcc.68K.option.enableLinkerDebug" defaultValue="true"/>
+</toolReference>
+<toolReference id="com.palmsource.eclipse.palmos4dev.builder.build-prc" command="build-prc" outputPrefix="" inputFlag="" outputFlag="-o" outputs="">
+<optionReference id="tool.builder.build-prc.option.other">
+<listOptionValue value="$(MULTISECTION_DEFINITIONS_FILE)" builtIn="false"/>
+<listOptionValue value="-c '$(CREATOR_ID)'" builtIn="false"/>
+<listOptionValue value="-n $(ARTIFACT_NAME)" builtIn="false"/>
+</optionReference>
+</toolReference>
+</configuration>
+<configuration id="target.m68k_palmos.exe.release.1549498134" name="Release" parent="target.m68k_palmos.exe.release">
+<toolReference id="com.palmsource.eclipse.palmostools.compiler.palmrc" command="&quot;$(TOOLS_DIR)PalmRC&quot;" outputPrefix="" inputFlag="" outputFlag="-o" outputs="trc">
+<optionReference id="tool.compiler.palmrc.option.otherFlags">
+<listOptionValue value="-p PalmOS4" builtIn="false"/>
+</optionReference>
+<optionReference id="tool.compiler.palmrc.option.locale" defaultValue=" enUS"/>
+<optionReference id="tool.compiler.palmrc.option.overlayFilter" defaultValue="None specified"/>
+<optionReference id="tool.compiler.palmrc.option.encodingTarget" defaultValue="Palm OS Latin"/>
+<optionReference id="tool.compiler.palmrc.option.strictEncoding" defaultValue="true"/>
+<optionReference id="tool.compiler.palmrc.option.noWarnSize" defaultValue="false"/>
+</toolReference>
+<toolReference id="com.palmsource.eclipse.palmos4dev.compiler.m68k_palmos" command="m68k-palmos-gcc -c" outputPrefix="" inputFlag="" outputFlag="-o" outputs="o">
+<optionReference id="tool.compiler.gcc.68K.option.optLevel" defaultValue="More (-O2)"/>
+<optionReference id="tool.compiler.gcc.68K.option.debugLevel" defaultValue="None"/>
+<optionReference id="tool.compiler.gcc.68K.option.defineSymbols">
+<listOptionValue value="__PALMOS__=0x05000000" builtIn="false"/>
+</optionReference>
+<optionReference id="tool.compiler.gcc.68K.option.includeDirs">
+<listOptionValue value="&quot;$(TOOLS_DIR)include/stlport&quot;" builtIn="false"/>
+</optionReference>
+<optionReference id="tool.compiler.gcc.68K.option.exceptions" defaultValue="Enable (-fexceptions)"/>
+<optionReference id="tool.compiler.gcc.68K.option.assertions" defaultValue="Enable (-UNDEBUG)"/>
+<optionReference id="tool.compiler.gcc.68K.option.warningLevel" defaultValue="All (-Wall)"/>
+</toolReference>
+<toolReference id="com.palmsource.eclipse.palmos4dev.builder.build-prc" command="build-prc" outputPrefix="" inputFlag="" outputFlag="-o" outputs="">
+<optionReference id="tool.builder.build-prc.option.other">
+<listOptionValue value="$(MULTISECTION_DEFINITIONS_FILE)" builtIn="false"/>
+<listOptionValue value="-c '$(CREATOR_ID)'" builtIn="false"/>
+<listOptionValue value="-n $(ARTIFACT_NAME)" builtIn="false"/>
+</optionReference>
+</toolReference>
+</configuration>
+</target>
+</ManagedProjectBuildInfo>

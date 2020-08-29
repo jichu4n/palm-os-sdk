@@ -1,0 +1,122 @@
+///***************************************************************
+// *
+// *  Project:
+// *	  HelperReceiver
+// *
+// * Copyright info:
+// *	  Copyright (c) Handspring 1999 -- All Rights Reserved
+// *
+// *  FileName:
+// *	  HelperReceiver.rcp
+// * 
+// *  Description:
+// *	  Resources for a test application for some of address 
+// *    book's launch codes.
+// *
+// * History:
+// *	  18-apr-2000  dia  Created
+// ****************************************************************/
+
+#include "HelperReceiver.h"
+
+
+// =======================================================
+// Misc Application Info
+// =======================================================
+
+APPLICATIONICONNAME	ID 1000 "HelperReceiver"
+VERSION 1 "1.1"
+
+
+MENU ID MainOptionsMenu
+BEGIN
+	PULLDOWN "Options"
+	BEGIN
+		MENUITEM  "About" MainOptionsAbout
+	END
+END
+
+
+// =======================================================
+// Main Form
+// =======================================================
+FORM ID rscMainViewFormID AT ( 0 0 160 160 )
+NOFRAME
+USABLE
+MODAL
+MENUID MainFormMenuBar
+BEGIN
+    TITLE "Helper Receiver"
+
+	LABEL "This is a receiver of SMS" 	ID 1111 AT (10 20)  USABLE FONT 1
+	LABEL "Email, and Web Helper" 		ID 1112 AT (10 30)  USABLE FONT 1
+	LABEL "notifications." 				ID 1113 AT (10 40)  USABLE FONT 1
+
+	BUTTON "Enable "	ID rscMainViewEnableButtonID	AT (50 70 AUTO AUTO)
+	BUTTON "Disable"	ID rscMainViewDisableButtonID	AT (50 100 AUTO AUTO)
+END
+
+
+ALERT ID rscHelperReceiverSMSAlertID
+INFORMATION
+BEGIN
+	TITLE "Helper Receiver"
+	MESSAGE "Action: ^1\n[Who]: ^2\nTo: ^3\n"
+	BUTTONS "OK" "View Message"
+END
+
+ALERT ID rscHelperReceiverEmailAlertID
+INFORMATION
+BEGIN
+	TITLE "Helper Receiver"
+	MESSAGE "Action: ^1\n[Who]: ^2\nTo: ^3\n"
+	BUTTONS "OK" "View Message"
+END
+
+ALERT ID rscHelperReceiverWebAlertID
+INFORMATION
+BEGIN
+	TITLE "Helper Receiver"
+	MESSAGE "Action: ^1\nURL: ^2\n"
+	BUTTONS "OK"
+END
+
+ALERT ID rscHelperReceiverMessageAlertID
+INFORMATION
+BEGIN
+	TITLE "Helper Receiver"
+	MESSAGE "^1^2\nMessage: ^3\n"
+	BUTTONS "OK"
+END
+
+ALERT ID rscRegisterFailedAlertID
+WARNING
+BEGIN
+	TITLE "Helper Receiver"
+	MESSAGE "Could not register:\n^1^2^3"
+	BUTTONS "OK"
+END
+
+ALERT ID rscUnregisterFailedAlertID
+WARNING
+BEGIN
+	TITLE "Helper Receiver"
+	MESSAGE "Could not Unregister:\n^1^2^3"
+	BUTTONS "OK"
+END
+
+ALERT ID rscRegisterSuccessAlertID
+WARNING
+BEGIN
+	TITLE "Helper Receiver"
+	MESSAGE "Register Helper Event successfully\n^1^2^3"
+	BUTTONS "OK"
+END
+
+ALERT ID rscUnregisterSuccessAlertID
+WARNING
+BEGIN
+	TITLE "Helper Receiver"
+	MESSAGE "UNRegister Helper Event successfully:\n^1^2^3"
+	BUTTONS "OK"
+END

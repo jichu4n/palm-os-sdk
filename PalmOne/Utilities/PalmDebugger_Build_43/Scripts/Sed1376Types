@@ -1,0 +1,182 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;  SED1376 LCD Controller 
+;  script file for PalmDebugger
+;
+;  This file should have any useful macros for the debugger.
+;  Examples of this are structures for the register maps in 
+;  the processors, the globals, and other data formats.
+;
+;  History
+;  Creator and origin unknown
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; These MPW script lines will do most of the work of converting
+;   a C Structure type to Debugger format
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;find ¥
+;replace  -c ° /([A-Za-z]+)¨2[ ¶t]+([_a-zA-Z0-9¶[¶]¶-]+)¨1;Å/ "> ¨2 ¶"¨1¶""
+;find ¥
+;replace -c ° /¶/¶/Å/ ""
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; SED1376 LCD Controller Definitions
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+typedef struct "Sed1376RegsType"
+	> UInt8           "prodRefCode"		
+	> UInt8           "dispBufferSize"		
+										
+	> UInt8           "configIn"			
+										
+	> UInt8			  "__filler3" \-				
+	> UInt8			  "busMemClkConfig"	
+										
+	> UInt8			  "pixelClkConfig"		
+	> UInt8			  "__filler6"[2] \-	
+
+
+	; Look up tables
+	> UInt8			  "lutWriteDataBlue"	
+	> UInt8			  "lutWriteDataGreen"	
+	> UInt8			  "lutWriteDataRed"	
+	> UInt8			  "lutWriteAddr"		
+
+	> UInt8			  "lutReadDataBlue"	
+	> UInt8			  "lutReadDataGreen"	
+	> UInt8			  "lutReadDataRed"		
+	> UInt8			  "lutReadAddr"		
+	
+
+	; General Configuration
+	> UInt8			  "panelType"			
+	> UInt8			  "modRate"			
+	> UInt8			  "hTotalDiv8"			
+										
+	> UInt8			  "__filler13"	 \-			
+	> UInt8			  "hPeriodDiv8"		
+										
+	> UInt8			  "__filler15"	 \-			
+	> UInt8			  "hStart0"			
+										
+	> UInt8			  "hStart1"			
+										
+	> UInt8			  "vTotal0"			
+										
+	> UInt8			  "vTotal1"			
+										
+	> UInt8			  "__filler1A"[2]	 \-		
+	> UInt8			  "vPeriod0"			
+										
+	> UInt8			  "vPeriod1"			
+										
+	> UInt8			  "vStart0"			
+										
+	> UInt8			  "vStart1"			
+										
+
+	; Sync Pulse Configuration
+	> UInt8			  "hsyncWidth"			
+										
+	> UInt8			  "__filler21"	 \-			
+	> UInt8			  "hsyncStart0"		
+										
+	> UInt8			  "hsyncStart1"		
+										
+	> UInt8			  "vSyncWidth"			
+										
+	> UInt8			  "__filler25"	 \-			
+	> UInt8			  "vSyncStart0"		
+										
+	> UInt8			  "vSyncStart1"		
+										
+
+	; Panel Configuration
+	> UInt8			  "dTfdGcpIndex"				 
+	> UInt8			  "__filler29"[3] \-				 
+	> UInt8			  "dTfdGcpData"			 
+	> UInt8			  "__filler2D"[43]	  \-	
+	> UInt8			  "displayMode"			 
+	> UInt8			  "specialEffects"			 
+	> UInt8			  "__filler72"[2] \-				 
+
+	
+	; Starting locations & sizes  of main and sub windows
+	> UInt8			  "mainStartOffset0"			
+												
+	> UInt8			  "mainStartOffset1"			
+	> UInt8			  "mainStartOffset2"			
+	> UInt8			  "__filler77"	  \-				
+	> UInt8			  "mainRowWidth0"				
+												
+	> UInt8			  "mainRowWidth1"				
+	> UInt8			  "__filler7A"[2] \-					
+	> UInt8			  "subStartOffset0"			
+												
+	> UInt8			  "subStartOffset1"			
+	> UInt8			  "subStartOffset2"			
+	> UInt8			  "__filler7F"	\-				
+	> UInt8			  "subRowWidth0"				
+												
+	> UInt8			  "subRowWidth1"				
+	> UInt8			  "__filler82"[2] \-					
+	> UInt8			  "subXStartPos0"				
+												
+	> UInt8			  "subXStartPos1"				
+	> UInt8			  "__filler86"[2] \-					
+	> UInt8			  "subYStartPos0"				
+												
+	> UInt8			  "subYStartPos1"				
+	> UInt8			  "__filler8A"[2] \-					
+	> UInt8			  "subXEndPos0"				
+												
+	> UInt8			  "subXEndPos1"				
+	> UInt8			  "__filler8E"[2] \-					
+	> UInt8			  "subYEndPos0"				
+												
+	> UInt8			  "subYEndPos1"				
+	> UInt8			  "__filler92"[E] \-			
+
+	
+	; Power Save, CPU configurations
+	> UInt8			  "powerSave"					
+	> UInt8			  "cpuAccess"					
+	> UInt16		  "softResetBigEndian"			
+												
+	> UInt8			  "scratch0"					
+	> UInt8			  "scratch1"					
+	> UInt8			  "__fillerA6"[2] \-					
+
+
+	; GPIO Control/Status
+	> UInt8			  "gpioConfig0"				
+	> UInt8			  "gpioConfig1"				
+	> UInt8			  "__fillerAA"[2] \-					
+	> UInt8			  "gpioStatusControl0"			
+	> UInt8			  "gpioStatusControl1"			
+	> UInt8			  "__fillerAE"[2] \-					
+
+
+	; PWM and Contrast Voltage
+	> UInt8			  "pwmCvClockControl"			
+												
+	> UInt8			  "pwmCvClockConfig"			
+												
+	> UInt8			  "cVBurstLength"				
+	> UInt8			  "pwmDutyCycle"				
+	typeend
+	
+	
+
+
+
+	
+;################################################################
+; Macros
+;##############################################################
+alias "SED1376"			"dm 11800000 Sed1376RegsType"
