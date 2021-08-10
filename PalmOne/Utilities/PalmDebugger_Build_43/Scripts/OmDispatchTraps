@@ -1,8 +1,0 @@
-	atr "OmInit" #950 #0
-	atr	"OmOpenOverlayDatabase" #950 #1
-	atr	"OmLocaleToOverlayDBName" #950 #2
-	atr	"OmOverlayDBNameToLocale" #950 #3
-	atr	"OmGetCurrentLocale" #950 #4
-	atr	"OmGetIndexedLocale" #950 #5
-	atr	"OmGetSystemLocale" #950 #6
-	atr	"OmSetSystemLocale" #950 #7

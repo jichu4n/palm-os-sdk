@@ -1,6 +1,0 @@
-att
-sc a6 100
-il pc-10 20 \bytes
-reg
-dm a6 200
-dm a7 200
