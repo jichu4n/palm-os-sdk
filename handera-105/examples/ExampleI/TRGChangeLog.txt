@@ -1,0 +1,57 @@
+Changes required to convert MemoPad to a QVGA aware application.
+Based on the PalmOS 4.0 SDK version, all changes are surrounded by:
+/* TRG */
+changes
+/* end TRG */
+to make them easier to find.  All code changes are within MemoMain.c
+
+1. Resource changes.
+
+  a.  Add QVGA IconsAdd IconID 2000 and 2001 which are 32x32 (1.5x icon view icon) and
+      22x15 (1.5x list view icon).
+  b.  Change ListView table number of rows to 25.
+  c.  Add HandEra.r resource to indicate it is a Handera 330 aware application.
+  d.  Fix typo in AlertID 2000, remove extra space before first period.
+
+2.  Support the larger screen.  Switching to 1to1 mode (240x240) gives
+    access to the additional fonts and allows supporting the minimized
+    silk screen.  Note that if you have any bitmaps, you'll need to add
+    1.5x versions at originalID + 0x1000 to your resources.
+
+  a.  Add #include "vga.h" to the top.
+  b.  Add a vgaExists global (Boolean).
+  c.  Add a check for vga existence in StartApplication() and set the
+      vgaExists global.
+  d.  Add a call to VgaSetScreenMode() in StartApplication().
+  e.  Add call to VgaFormModify() in EditViewHandleEvent and
+      ListViewHandleEvent frmOpenEvent and frmGotoEvent cases.
+  f.  Add VgaFormModify() to the modal forms in: DetailsInit(),
+      DeleteRecord(), EditViewDeleteRecord(), and PreferencesInit().
+
+3. Cleanup font issues.  The default font needs to be changed to the
+   standard font instead of the smallest.  Also, calls to
+   VgaTableUseBaseFont() need to be put in where the table is using
+   small fonts.
+
+  a.  ListViewHandleEvent() frmOpenCase, add VgaTableUseBaseFont(, !VgaIsVgaFont()).
+  b.  SelectFont() add VgaTableUseBaseFont(, !VgaIsVgaFont()) if it is ListView.
+  c.  MemoLoadPrefs() add VgaBaseToVgaFont() to get the correct default font.
+  d.  ListViewDisplayMask() adjust for new lock bitmap size and use new bitmap
+      when using a Vga font.
+
+4. Support the virtual silk screen.
+  
+  a.  Add functions EditViewResizeForm() and ListViewResizeForm(),
+      and the utility functions PrvMoveObject(), PrvResizeObject(),
+      and PrvFrmGetGSI().
+  b.  Call appropriate ResizeForm function from frmOpenEvent to
+      handle the case where the app is launched with the silk minimized.
+  c.  Add vgaChangedEvent to ListViewHandleEvent and EditViewHandleEvent
+      and call appropriate ResizeForm().
+
+5. Support one-hand operation.
+  a.  Add handler for chrCarriageReturn and chrEscape to EditViewHandleEvent()
+      which returns to the ListView.
+  b.  Add handlers for chrCarriageReturn, vchrNextField, and vchrPrevField
+      to ListViewHandleEvent().
+  c.  Unselect item if category changes.

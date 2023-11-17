@@ -10,4 +10,5 @@ Contributers
 - https://github.com/acesso[*@acesso*]: SDKs 1.0, 2.0, 3.1, 3.5, and 4.0
 - https://github.com/jichu4n[*@jichu4n*]: SDK 5.0r3
 - https://github.com/stevelittle[*@stevelittle*]: SDK 5.0r4
+- https://github.com/Tavisco[*@Tavisco*]: Handera SDK 1.05
 
