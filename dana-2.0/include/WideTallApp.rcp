@@ -1,0 +1,14 @@
+/*************************************************************************
+ *
+ * Copyright (c) 2001-2002 by AlphaSmart, Inc.
+ * All rights reserved.
+ *
+ * FILE:            WideTallApp.rcp
+ *
+ * DESCRIPTION: This file contains resources for WideTall applications.
+ *
+ ****************************************************************************/
+
+/* Set bit 0 for wide tall aware. */
+HEX 'wTap' ID 1000
+    0x00 0x00 0x00 0x01

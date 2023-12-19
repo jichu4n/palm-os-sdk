@@ -1,0 +1,1 @@
+The following example projects were created with CodeWarrior 7 on the PC.  They have been tested with CodeWarrior 8.3 on the PC, also.

@@ -1,0 +1,46 @@
+#// This is a skin file for the Palm OS Emulator.  The coordinates
+#// are for the Dana skin
+
+Name			= Dana without SD cards
+File1x			= DanaSkin_1x.jpg
+File2x			= DanaSkin_2x.jpg
+BackgroundColor	= 0x98, 0xA8, 0x7A
+HighlightColor	= 0x64, 0xF0, 0xDC
+Devices			= DanaDevice
+
+#//									  x    y    w    h
+#//								   ---- ---- ---- ----
+Element1		= PowerButton,		 48, 326,  37,  35
+Element2		= Touchscreen,		162,  77, 560, 160
+Element3		= LCD,				162,  77, 560, 160
+
+Element4		= F1_KEY,			96,  326,  37,  35
+Element5		= F2_KEY,			142, 326,  37,  35
+Element6		= F3_KEY,			189, 326,  37,  35
+Element7		= F4_KEY,			235, 326,  37,  35
+Element8		= F5_KEY,			282, 326,  37,  35
+Element9		= F6_KEY,			329, 326,  37,  35
+Element10		= F7_KEY,			376, 326,  37,  35
+Element11		= F8_KEY,			423, 326,  37,  35
+Element12		= F9_KEY,			470, 326,  37,  35
+Element13		= F10_KEY,			517, 326,  37,  35
+Element14		= F11_KEY,			564, 326,  37,  35
+Element15		= F12_KEY,			612, 326,  37,  35
+Element16		= F13_KEY,			659, 326,  37,  35
+Element17		= F14_KEY,			707, 326,  37,  35
+Element18		= F15_KEY,			754, 326,  37,  35
+Element19		= F16_KEY,			801, 326,  37,	35
+
+Element20		= CONTROL_KEY,		51,  589,  52,	42
+Element21		= ALT_LEFT_KEY,		118, 589,  52,	42
+Element22		= COMMAND_KEY,		185, 589,  52,	42
+Element23		= CLEAR_MODIFIERS_KEY,	124, 652, 71, 22
+
+Element24		= PC_DELETE_KEY,	615, 591,  37,  35
+Element25		= SHIFT_RIGHT_KEY,	726, 537,  108, 40
+Element26		= SHIFT_LEFT_KEY,	51,  537,  108, 45
+Element27		= CAPS_LOCK_KEY,	54,  481,  82,  45
+Element28		= ESCAPE_KEY,		559,  591,  37,  35
+
+
+
